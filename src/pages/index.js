@@ -17,14 +17,12 @@ const Home = () => {
     <LayoutOne aboutOverlay={false}>
       {/* hero slider */}
       <HeroSliderOne sliderData={heroSliderData} />
-
       {/* product tab */}
       <ProductTab
         newProducts={newProducts}
         popularProducts={popularProducts}
         saleProducts={saleProducts}
       />
-
       {/* image cta */}
       <ImageCta
         image={imageCtaData.image}

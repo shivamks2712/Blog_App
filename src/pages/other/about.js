@@ -22,9 +22,7 @@ const About = () => {
       >
         <ul className="breadcrumb__list">
           <li>
-            <Anchor path="/">
-              Home
-            </Anchor>
+            <Anchor path="/">Home</Anchor>
           </li>
 
           <li>About</li>
@@ -66,13 +64,11 @@ const About = () => {
                     backgroundImage: `url(${
                       process.env.PUBLIC_URL +
                       "/assets/images/backgrounds/about-video-bg.png"
-                    })`
+                    })`,
                   }}
                 >
                   <p className="video-text video-text-start">
-                    <Anchor path="/shop/left-sidebar">
-                      LEZADA STORE
-                    </Anchor>
+                    <Anchor path="/shop/left-sidebar">LEZADA STORE</Anchor>
                   </p>
 
                   <div className="about-video-content__text-icon d-flex flex-column h-100 justify-content-center">
@@ -97,9 +93,7 @@ const About = () => {
                     <h1>OUR STORY</h1>
                   </div>
                   <p className="video-text video-text-end">
-                    <Anchor path="/other/about">
-                      OUR STORY
-                    </Anchor>
+                    <Anchor path="/other/about">OUR STORY</Anchor>
                   </p>
                 </div>
               </Col>
@@ -132,8 +126,11 @@ const About = () => {
                         sit amet, consectetur cing elit. Suspe ndisse suscipit
                         sagittis leo sit es
                       </p>
-                      <Anchor path="/shop/left-sidebar" className="lezada-button lezada-button--medium lezada-button--icon--left">
-                          <IoMdAdd /> online store
+                      <Anchor
+                        path="/shop/left-sidebar"
+                        className="lezada-button lezada-button--medium lezada-button--icon--left"
+                      >
+                        <IoMdAdd /> online store
                       </Anchor>
                     </div>
                   </Col>

@@ -7,7 +7,7 @@ import {
   IoMdPerson,
   IoIosHeartEmpty,
   IoIosCart,
-  IoIosMenu
+  IoIosMenu,
 } from "react-icons/io";
 import Navigation from "./elements/Navigation";
 import AboutOverlay from "./elements/AboutOverlay";
@@ -17,7 +17,7 @@ import WishlistOverlay from "./elements/WishlistOverlay";
 import MobileMenu from "./elements/MobileMenu";
 import Anchor from "../anchor";
 
-const HeaderOne = ({ aboutOverlay}) => {
+const HeaderOne = ({ aboutOverlay }) => {
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -25,13 +25,11 @@ const HeaderOne = ({ aboutOverlay}) => {
   const [offCanvasSearchActive, setOffCanvasSearchActive] = useState(false);
   const [offCanvasCartActive, setOffCanvasCartActive] = useState(false);
   const [offCanvasWishlistActive, setOffCanvasWishlistActive] = useState(false);
-  const [offCanvasMobileMenuActive, setOffCanvasMobileMenuActive] = useState(
-    false
-  );
+  const [offCanvasMobileMenuActive, setOffCanvasMobileMenuActive] =
+    useState(false);
 
   const { cartItems } = useSelector((state) => state.cart);
   const { wishlistItems } = useSelector((state) => state.wishlist);
-
 
   useEffect(() => {
     const header = document.querySelector("header");
@@ -66,16 +64,20 @@ const HeaderOne = ({ aboutOverlay}) => {
                     .querySelector("body")
                     .classList.add("overflow-hidden");
                 }}
-                className={clsx(aboutOverlay === false ? "d-none" : "about-overlay-trigger d-none d-lg-block")}
+                className={clsx(
+                  aboutOverlay === false
+                    ? "d-none"
+                    : "about-overlay-trigger d-none d-lg-block"
+                )}
               >
                 <IoIosMenu />
               </button>
               <Anchor path="/">
-                  <img
-                    src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
-                    className="img-fluid"
-                    alt=""
-                  />
+                <img
+                  src={process.env.PUBLIC_URL + "/assets/images/logo1.png"}
+                  className="img-fluid"
+                  alt=""
+                />
               </Anchor>
             </div>
 
@@ -99,7 +101,7 @@ const HeaderOne = ({ aboutOverlay}) => {
                 </li>
                 <li>
                   <Anchor path="/other/login-register">
-                      <IoMdPerson />
+                    <IoMdPerson />
                   </Anchor>
                 </li>
                 <li>
@@ -145,26 +147,26 @@ const HeaderOne = ({ aboutOverlay}) => {
               <ul className="d-block d-lg-none">
                 <li>
                   <Anchor path="/other/wishlist">
-                      <IoIosHeartEmpty />
-                      {wishlistItems.length >= 1 ? (
-                        <span className="count">
-                          {wishlistItems.length ? wishlistItems.length : ""}
-                        </span>
-                      ) : (
-                        ""
-                      )}
+                    <IoIosHeartEmpty />
+                    {wishlistItems.length >= 1 ? (
+                      <span className="count">
+                        {wishlistItems.length ? wishlistItems.length : ""}
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </Anchor>
                 </li>
                 <li>
                   <Anchor path="/other/cart">
-                      <IoIosCart />
-                      {cartItems.length >= 1 ? (
-                        <span className="count">
-                          {cartItems.length ? cartItems.length : ""}
-                        </span>
-                      ) : (
-                        ""
-                      )}
+                    <IoIosCart />
+                    {cartItems.length >= 1 ? (
+                      <span className="count">
+                        {cartItems.length ? cartItems.length : ""}
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </Anchor>
                 </li>
                 <li>

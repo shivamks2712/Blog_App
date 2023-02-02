@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import Head from "next/head";
 import { Work_Sans } from "@next/font/google";
 import { Provider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react';
+import { PersistGate } from "redux-persist/integration/react";
 import { wrapper } from "../store";
 import { setProducts } from "../store/slices/product-slice";
 import products from "../data/products.json";
@@ -10,19 +10,18 @@ import Preloader from "../components/Preloader";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-import 'swiper/swiper-bundle.min.css';
+import "swiper/swiper-bundle.min.css";
 import "../assets/scss/styles.scss";
-
 
 const workSans = Work_Sans({
   weight: ["300", "400", "500", "600", "700"],
-  style: ['normal'],
-  subsets: ['latin'],
+  style: ["normal"],
+  subsets: ["latin"],
   display: "swap",
-})
+});
 
-const MyApp = ({Component, ...rest}) => {
-  const {store, props} = wrapper.useWrappedStore(rest);
+const MyApp = ({ Component, ...rest }) => {
+  const { store, props } = wrapper.useWrappedStore(rest);
   useEffect(() => {
     store.dispatch(setProducts(products));
   }, []);
@@ -30,17 +29,18 @@ const MyApp = ({Component, ...rest}) => {
   return (
     <Fragment>
       <Head>
-        <title>Lezada | React Next JS Multipurpose eCommerce Template</title>
+        <title>Shop27</title>
         <link rel="icon" href={process.env.PUBLIC_URL + "/favicon.ico"} />
       </Head>
-      <style jsx global>{`
+      <style jsx global>
+        {`
           :root {
             --ff-body: ${workSans.style.fontFamily};
           }
         `}
       </style>
       <Provider store={store}>
-        <PersistGate persistor={store.__persistor} loading={<Preloader/>}>
+        <PersistGate persistor={store.__persistor} loading={<Preloader />}>
           <Component {...props.pageProps} />
         </PersistGate>
       </Provider>
