@@ -13,11 +13,7 @@ const ProductDescriptionTab = ({ product }) => {
           <Nav.Item>
             <Nav.Link eventKey="description">Description</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="additionalInfo">
-              Additional Information
-            </Nav.Link>
-          </Nav.Item>
+
           <Nav.Item>
             <Nav.Link eventKey="reviews">
               Reviews {product.ratingCount ? `(${product.ratingCount})` : ""}
@@ -30,26 +26,7 @@ const ProductDescriptionTab = ({ product }) => {
               {product.fullDescription}
             </div>
           </Tab.Pane>
-          <Tab.Pane eventKey="additionalInfo">
-            <div className="product-description-tab__additional-info">
-              <table className="shop-attributes">
-                <tbody>
-                  <tr>
-                    <th>Size</th>
-                    <td>
-                      <p>L, M, S, XS</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Color</th>
-                    <td>
-                      <p>Black, Blue, Brown</p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </Tab.Pane>
+
           <Tab.Pane eventKey="reviews">
             <div className="product-description-tab__review">
               <h2 className="review-title space-mb--20">

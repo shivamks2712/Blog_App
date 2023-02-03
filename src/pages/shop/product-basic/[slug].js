@@ -3,13 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { LayoutTwo } from "../../../components/Layout";
 import { getDiscountPrice } from "../../../lib/product";
-import { BreadcrumbOne } from "../../../components/Breadcrumb";
 import {
   ImageGalleryBottomThumb,
   ProductDescription,
-  ProductDescriptionTab
+  ProductDescriptionTab,
 } from "../../../components/ProductDetails";
-import Anchor from "../../../components/anchor";
 import products from "../../../data/products.json";
 
 const ProductBasic = ({ product }) => {
@@ -27,9 +25,7 @@ const ProductBasic = ({ product }) => {
   ).toFixed(2);
 
   const productPrice = product.price.toFixed(2);
-  const cartItem = cartItems.find(
-    (cartItem) => cartItem.id === product.id
-  );
+  const cartItem = cartItems.find((cartItem) => cartItem.id === product.id);
   const wishlistItem = wishlistItems.find(
     (wishlistItem) => wishlistItem.id === product.id
   );
@@ -39,36 +35,13 @@ const ProductBasic = ({ product }) => {
 
   return (
     <LayoutTwo>
-      {/* breadcrumb */}
-      <BreadcrumbOne
-        pageTitle={product.name}
-        backgroundImage="/assets/images/backgrounds/breadcrumb-bg-1.png"
-      >
-        <ul className="breadcrumb__list">
-          <li>
-            <Anchor path="/">
-              Home
-            </Anchor>
-          </li>
-          <li>
-            <Anchor path="/shop/left-sidebar">
-              Shop
-            </Anchor>
-          </li>
-          <li>{product.name}</li>
-        </ul>
-      </BreadcrumbOne>
-
       {/* product details */}
       <div className="product-details space-mt--r100 space-mb--r100">
         <Container>
           <Row>
             <Col lg={6} className="space-mb-mobile-only--50">
               {/* image gallery bottom thumb */}
-              <ImageGalleryBottomThumb
-                product={product}
-                wishlistItem={wishlistItem}
-              />
+              <ImageGalleryBottomThumb product={product} />
             </Col>
 
             <Col lg={6}>
@@ -96,13 +69,12 @@ const ProductBasic = ({ product }) => {
   );
 };
 
-
 export default ProductBasic;
 
 export async function getStaticPaths() {
   // get the paths we want to pre render based on products
   const paths = products.map((product) => ({
-    params: { slug: product.slug }
+    params: { slug: product.slug },
   }));
 
   return { paths, fallback: false };

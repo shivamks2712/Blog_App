@@ -1,4 +1,3 @@
-
 /*=============================================
 =            product image gallery            =
 =============================================*/
@@ -7,6 +6,7 @@
   position: relative;
 
   .single-image {
+    max-height: 45vh;
     img {
       width: 100%;
     }
@@ -44,7 +44,7 @@
     border: none;
     background: none;
     position: absolute;
-    top: 80px;
+    top: 20px;
     right: 20px;
     &:hover {
       color: $black--two;
@@ -97,7 +97,7 @@
       color: $white;
       border-radius: 100%;
 
-@include respond(small-desktop) {
+      @include respond(small-desktop) {
         line-height: 40px;
 
         width: 40px;
@@ -124,6 +124,9 @@
 }
 
 .product-small-image-wrapper {
+  div.single-image {
+    max-height: 8rem;
+  }
   .ht-swiper-button-nav {
     border: none;
     background: none;
@@ -137,47 +140,44 @@
     }
   }
 
-
-
   &--side-thumb {
     overflow: hidden;
 
     height: 970px;
-    .swiper-vertical, .swiper-wrap {
+    .swiper-vertical,
+    .swiper-wrap {
       height: 100%;
     }
 
-@include respond(large-desktop) {
+    @include respond(large-desktop) {
       height: 676px;
     }
 
-@include respond(small-desktop) {
+    @include respond(small-desktop) {
       height: auto;
       margin-top: 10px;
     }
 
-@include respond(extra-large-mobile) {
+    @include respond(extra-large-mobile) {
       height: auto;
       margin-top: 10px;
     }
 
-@include respond(large-mobile) {
+    @include respond(large-mobile) {
       height: auto;
       margin-top: 10px;
     }
 
     .single-image {
-      height: 100%;
-
-@include respond(small-desktop) {
+      @include respond(small-desktop) {
         height: auto;
       }
 
-@include respond(extra-large-mobile) {
+      @include respond(extra-large-mobile) {
         height: auto;
       }
 
-@include respond(large-mobile) {
+      @include respond(large-mobile) {
         height: auto;
       }
 
@@ -185,15 +185,15 @@
         width: 100%;
         height: 100%;
 
-@include respond(small-desktop) {
+        @include respond(small-desktop) {
           height: auto;
         }
 
-@include respond(extra-large-mobile) {
+        @include respond(extra-large-mobile) {
           height: auto;
         }
 
-@include respond(large-mobile) {
+        @include respond(large-mobile) {
           height: auto;
         }
       }
@@ -206,17 +206,17 @@
     margin-right: -5px;
     margin-left: -5px;
 
-@include respond(small-desktop) {
+    @include respond(small-desktop) {
       margin-right: -15px;
       margin-left: -15px;
     }
 
-@include respond(extra-large-mobile) {
+    @include respond(extra-large-mobile) {
       margin-right: -15px;
       margin-left: -15px;
     }
 
-@include respond(large-mobile) {
+    @include respond(large-mobile) {
       margin-right: -15px;
       margin-left: -15px;
     }
@@ -227,17 +227,17 @@
     padding-right: 5px;
     padding-left: 5px;
 
-@include respond(small-desktop) {
+    @include respond(small-desktop) {
       padding-right: 15px;
       padding-left: 15px;
     }
 
-@include respond(extra-large-mobile) {
+    @include respond(extra-large-mobile) {
       padding-right: 15px;
       padding-left: 15px;
     }
 
-@include respond(large-mobile) {
+    @include respond(large-mobile) {
       padding-right: 15px;
       padding-left: 15px;
     }
@@ -253,4 +253,3 @@
 // .product-small-image-wrapper.product-small-image-wrapper--side-thumb .swiper-wrap, .swiper-pointer-events.swiper-vertical
 
 /*=====  End of product image gallery  ======*/
-

@@ -6,7 +6,10 @@ import { SubscribeEmailTwo } from "../Newsletter";
 const FooterTwo = ({ footerBgClass }) => {
   return (
     <footer
-      className={clsx("space-pt--100 space-pb--50", footerBgClass ? footerBgClass : "bg-color--grey")}
+      className={clsx(
+        "space-pt--100 space-pb--50",
+        footerBgClass ? footerBgClass : "bg-color--grey"
+      )}
     >
       <Container className="wide">
         <Row>
@@ -103,16 +106,16 @@ const FooterTwo = ({ footerBgClass }) => {
             </nav>
           </Col>
 
-          <Col className="footer-single-widget space-mb--50">
+          {/* <Col className="footer-single-widget space-mb--50">
             <div className="footer-subscribe-widget">
               <h2 className="footer-subscribe-widget__title">Subscribe.</h2>
               <p className="footer-subscribe-widget__subtitle">
                 Subscribe to our newsletter to receive news on update.
               </p>
-              {/* email subscription */}
+              email subscription
               <SubscribeEmailTwo mailchimpUrl="https://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" />
             </div>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </footer>

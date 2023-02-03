@@ -2,14 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Container } from "react-bootstrap";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
-import {
-  IoIosSearch,
-  IoMdPerson,
-  IoIosHeartEmpty,
-  IoIosCart,
-  IoIosMenu,
-} from "react-icons/io";
-import Navigation from "./elements/Navigation";
+import { IoIosSearch, IoMdPerson, IoIosCart, IoIosMenu } from "react-icons/io";
 import AboutOverlay from "./elements/AboutOverlay";
 import SearchOverlay from "./elements/SearchOverlay";
 import CartOverlay from "./elements/CartOverlay";
@@ -29,7 +22,7 @@ const HeaderOne = ({ aboutOverlay }) => {
     useState(false);
 
   const { cartItems } = useSelector((state) => state.cart);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
+  // const { wishlistItems } = useSelector((state) => state.wishlist);
 
   useEffect(() => {
     const header = document.querySelector("header");
@@ -54,7 +47,7 @@ const HeaderOne = ({ aboutOverlay }) => {
         className={clsx("topbar-shadow", scroll > headerTop && "is-sticky")}
       >
         <Container className="wide">
-          <div className="header-content d-flex align-items-center justify-content-between position-relative space-py-mobile-only--30">
+          <div className="header-content d-flex align-items-center justify-content-between position-relative space-py-mobile-only--30 py-2">
             {/* logo */}
             <div className="header-content__logo d-flex align-items-center space-pr--15">
               <button
@@ -74,15 +67,12 @@ const HeaderOne = ({ aboutOverlay }) => {
               </button>
               <Anchor path="/">
                 <img
-                  src={process.env.PUBLIC_URL + "/assets/images/logo1.png"}
+                  src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
                   className="img-fluid"
                   alt=""
                 />
               </Anchor>
             </div>
-
-            {/* navigation */}
-            <Navigation />
 
             {/* icons */}
             <div className="header-content__icons space-pl--15">
@@ -97,30 +87,6 @@ const HeaderOne = ({ aboutOverlay }) => {
                     }}
                   >
                     <IoIosSearch />
-                  </button>
-                </li>
-                <li>
-                  <Anchor path="/other/login-register">
-                    <IoMdPerson />
-                  </Anchor>
-                </li>
-                <li>
-                  <button
-                    onClick={() => {
-                      setOffCanvasWishlistActive(true);
-                      document
-                        .querySelector("body")
-                        .classList.add("overflow-hidden");
-                    }}
-                  >
-                    <IoIosHeartEmpty />
-                    {wishlistItems.length >= 1 ? (
-                      <span className="count">
-                        {wishlistItems.length ? wishlistItems.length : ""}
-                      </span>
-                    ) : (
-                      ""
-                    )}
                   </button>
                 </li>
                 <li>
@@ -142,10 +108,16 @@ const HeaderOne = ({ aboutOverlay }) => {
                     )}
                   </button>
                 </li>
+                <li>
+                  <Anchor path="/user/login">
+                    <IoMdPerson />
+                  </Anchor>
+                </li>
               </ul>
 
               <ul className="d-block d-lg-none">
-                <li>
+                {/* wishlist comment */}
+                {/* <li>
                   <Anchor path="/other/wishlist">
                     <IoIosHeartEmpty />
                     {wishlistItems.length >= 1 ? (
@@ -156,7 +128,7 @@ const HeaderOne = ({ aboutOverlay }) => {
                       ""
                     )}
                   </Anchor>
-                </li>
+                </li> */}
                 <li>
                   <Anchor path="/other/cart">
                     <IoIosCart />

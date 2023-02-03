@@ -7,12 +7,15 @@ const params = {
   speed: 1000,
   spaceBetween: 200,
   navigation: true,
+  autoplay: {
+    delay: 2500,
+  },
 };
 
 const HeroSliderOne = ({ sliderData }) => {
   return (
     <div className="hero-slider-one space-mb--r100">
-      <Container>
+      <Container fluid className="p-0 m-0">
         <div className="hero-slider-one__wrapper">
           {sliderData.length ? (
             <Swiper options={params}>
@@ -24,25 +27,29 @@ const HeroSliderOne = ({ sliderData }) => {
                   >
                     <div className="slider-image">
                       <img
-                        // src={process.env.PUBLIC_URL + single.image}
-                        src="https://d11v4icdkrg2b5.cloudfront.net/lists/Healthy-College-Grocery-List.jpg"
-                        className="img-fluid"
+                        src={process.env.PUBLIC_URL + single.image}
+                        className="img-fluid heroSlideOneBannerImage"
                         alt=""
                       />
                     </div>
                     <div className="slider-content">
-                      <h2 className="color-title color-title--blue space-mb--20">
+                      <h2
+                        className={`color-title  heroSliderOneSubTitle ${
+                          single.id == 3 ? "text-black" : ""
+                        } `}
+                      >
                         {single.subtitle}
                       </h2>
                       <h1
-                        className="main-title space-mb--30"
+                        className={`main-title space-mb--20 heroSliderOneBannerTitle heroslidebanner-id-${single.id}`}
                         dangerouslySetInnerHTML={{ __html: single.title }}
                       />
                       <Anchor
                         path={single.url}
-                        className="lezada-button lezada-button--medium"
+                        className="lezada-button lezada-button--medium "
+                        style={{ marginLeft: "20px" }}
                       >
-                        shop now
+                        order now
                       </Anchor>
                     </div>
                   </SwiperSlide>

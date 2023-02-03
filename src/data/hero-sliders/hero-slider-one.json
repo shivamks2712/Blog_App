@@ -1,22 +1,22 @@
 [
   {
     "id": "1",
-    "image": "/assets/images/hero-slider/hero-slider-one/1.jpg",
-    "subtitle": "ACCESSORIES",
-    "title": "Bottle Grinder, <br> Small, 2-Piece",
+    "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JvY2VyeXxlbnwwfHwwfHw%3D&w=1000&q=80",
+    "subtitle": "VEGETABLES",
+    "title": "Get  upto <br> 30% off",
     "url": "/shop/left-sidebar"
   },
   {
     "id": "2",
-    "image": "/assets/images/hero-slider/hero-slider-one/2.jpg",
-    "subtitle": "HANDMADE",
-    "title": "Large, <br> Food board",
+    "image": "/assets/images/hero-slider/hero-slider-one/laundary.jpg",
+    "subtitle": "Laundary Services",
+    "title": "Starting  @ ₹ 10*",
     "url": "/shop/left-sidebar"
   },
   {
     "id": "3",
-    "image": "/assets/images/hero-slider/hero-slider-one/3.jpg",
-    "subtitle": "ACCESSORIES",
+    "image": "https://media.istockphoto.com/id/519582436/photo/house-cleaning-product-on-wood-table-with-green-background.jpg?s=612x612&w=0&k=20&c=roTkkm5mDgp8FAR0gdEaB_VBrTO6lEBIb3KaJtGVSI4=",
+    "subtitle": "Cleaning  Essentials",
     "title": "Tribeca Hubert, <br> Pendant",
     "url": "/shop/left-sidebar"
   }

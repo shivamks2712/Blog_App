@@ -28,12 +28,15 @@ const HeaderTwo = () => {
   return (
     <Fragment>
       <header
-        className={clsx("topbar-shadow position-absolute", scroll > headerTop && "is-sticky")}
+        className={clsx(
+          "topbar-shadow position-absolute",
+          scroll > headerTop && "is-sticky"
+        )}
         style={{
           top: 0,
           left: 0,
           width: "100%",
-          paddingTop: "25px"
+          paddingTop: "25px",
         }}
       >
         <Container className="wide">
@@ -41,11 +44,11 @@ const HeaderTwo = () => {
             {/* logo */}
             <div className="header-content__logo d-flex align-items-center space-pr--15">
               <Anchor path="/">
-                  <img
-                    src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
-                    className="img-fluid"
-                    alt=""
-                  />
+                <img
+                  src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
+                  className="img-fluid"
+                  alt=""
+                />
               </Anchor>
             </div>
           </div>
