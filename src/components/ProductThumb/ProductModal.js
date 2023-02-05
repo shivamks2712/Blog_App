@@ -7,21 +7,22 @@ import { getProductCartQuantity } from "../../lib/product";
 import { ProductRating } from "../Product";
 import Swiper, { SwiperSlide } from "../swiper";
 import { addToCart } from "../../store/slices/cart-slice";
-import { addToWishlist, deleteFromWishlist } from "../../store/slices/wishlist-slice";
-import { addToCompare, deleteFromCompare } from "../../store/slices/compare-slice";
+import {
+  addToWishlist,
+  deleteFromWishlist,
+} from "../../store/slices/wishlist-slice";
+import {
+  addToCompare,
+  deleteFromCompare,
+} from "../../store/slices/compare-slice";
 
 const gallerySwiperParams = {
-  pagination:  true
+  pagination: true,
 };
 
 const ProductModal = (props) => {
-  const {
-    product,
-    discountedprice,
-    productprice,
-    wishlistitem,
-    compareitem,
-  } = props;
+  const { product, discountedprice, productprice, wishlistitem, compareitem } =
+    props;
 
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
@@ -234,12 +235,22 @@ const ProductModal = (props) => {
                       {productStock && productStock > 0 ? (
                         <button
                           onClick={() =>
-                            dispatch(addToCart({
-                              ...product,
-                              quantity: quantityCount,
-                              selectedProductColor: selectedProductColor ? selectedProductColor : product.selectedProductColor ? product.selectedProductColor : null,
-                              selectedProductSize: selectedProductSize ? selectedProductSize : product.selectedProductSize ? product.selectedProductSize : null
-                            }))
+                            dispatch(
+                              addToCart({
+                                ...product,
+                                quantity: quantityCount,
+                                selectedProductColor: selectedProductColor
+                                  ? selectedProductColor
+                                  : product.selectedProductColor
+                                  ? product.selectedProductColor
+                                  : null,
+                                selectedProductSize: selectedProductSize
+                                  ? selectedProductSize
+                                  : product.selectedProductSize
+                                  ? product.selectedProductSize
+                                  : null,
+                              })
+                            )
                           }
                           disabled={productCartQty >= productStock}
                           className="lezada-button lezada-button--medium product-quickview__cart space-mr--10"
@@ -254,42 +265,6 @@ const ProductModal = (props) => {
                           Out of Stock
                         </button>
                       )}
-
-                      <button
-                        className={`product-quickview__wishlist space-mr--10 ${
-                          wishlistitem !== undefined ? "active" : ""
-                        }`}
-                        title={
-                          wishlistitem !== undefined
-                            ? "Added to wishlist"
-                            : "Add to wishlist"
-                        }
-                        onClick={
-                          wishlistitem !== undefined
-                            ? () => dispatch(deleteFromWishlist(product.id))
-                            : () => dispatch(addToWishlist(product))
-                        }
-                      >
-                        <IoIosHeartEmpty />
-                      </button>
-
-                      <button
-                        className={`product-quickview__compare space-mr--10 ${
-                          compareitem !== undefined ? "active" : ""
-                        }`}
-                        title={
-                          compareitem !== undefined
-                            ? "Added to compare"
-                            : "Add to compare"
-                        }
-                        onClick={
-                          compareitem !== undefined
-                            ? () => dispatch(deleteFromCompare(product.id))
-                            : () => dispatch(addToCompare(product))
-                        }
-                      >
-                        <IoIosShuffle />
-                      </button>
                     </div>
                   </Fragment>
                 )}

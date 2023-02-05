@@ -14,15 +14,12 @@ const HeaderOne = ({ aboutOverlay }) => {
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const [offCanvasAboutActive, setOffCanvasAboutActive] = useState(false);
   const [offCanvasSearchActive, setOffCanvasSearchActive] = useState(false);
   const [offCanvasCartActive, setOffCanvasCartActive] = useState(false);
-  const [offCanvasWishlistActive, setOffCanvasWishlistActive] = useState(false);
   const [offCanvasMobileMenuActive, setOffCanvasMobileMenuActive] =
     useState(false);
 
   const { cartItems } = useSelector((state) => state.cart);
-  // const { wishlistItems } = useSelector((state) => state.wishlist);
 
   useEffect(() => {
     const header = document.querySelector("header");
@@ -50,21 +47,6 @@ const HeaderOne = ({ aboutOverlay }) => {
           <div className="header-content d-flex align-items-center justify-content-between position-relative space-py-mobile-only--30 py-2">
             {/* logo */}
             <div className="header-content__logo d-flex align-items-center space-pr--15">
-              <button
-                onClick={() => {
-                  setOffCanvasAboutActive(true);
-                  document
-                    .querySelector("body")
-                    .classList.add("overflow-hidden");
-                }}
-                className={clsx(
-                  aboutOverlay === false
-                    ? "d-none"
-                    : "about-overlay-trigger d-none d-lg-block"
-                )}
-              >
-                <IoIosMenu />
-              </button>
               <Anchor path="/">
                 <img
                   src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
@@ -76,7 +58,7 @@ const HeaderOne = ({ aboutOverlay }) => {
 
             {/* icons */}
             <div className="header-content__icons space-pl--15">
-              <ul className="d-none d-lg-block">
+              <ul className="d-block ">
                 <li>
                   <button
                     onClick={() => {
@@ -90,47 +72,7 @@ const HeaderOne = ({ aboutOverlay }) => {
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={() => {
-                      setOffCanvasCartActive(true);
-                      document
-                        .querySelector("body")
-                        .classList.add("overflow-hidden");
-                    }}
-                  >
-                    <IoIosCart />
-                    {cartItems.length >= 1 ? (
-                      <span className="count">
-                        {cartItems.length ? cartItems.length : ""}
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </button>
-                </li>
-                <li>
-                  <Anchor path="/user/login">
-                    <IoMdPerson />
-                  </Anchor>
-                </li>
-              </ul>
-
-              <ul className="d-block d-lg-none">
-                {/* wishlist comment */}
-                {/* <li>
-                  <Anchor path="/other/wishlist">
-                    <IoIosHeartEmpty />
-                    {wishlistItems.length >= 1 ? (
-                      <span className="count">
-                        {wishlistItems.length ? wishlistItems.length : ""}
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </Anchor>
-                </li> */}
-                <li>
-                  <Anchor path="/other/cart">
+                  <Anchor path="/user/cart">
                     <IoIosCart />
                     {cartItems.length >= 1 ? (
                       <span className="count">
@@ -143,7 +85,7 @@ const HeaderOne = ({ aboutOverlay }) => {
                 </li>
                 <li>
                   <button onClick={() => setOffCanvasMobileMenuActive(true)}>
-                    <IoIosMenu />
+                    <IoMdPerson />
                   </button>
                 </li>
               </ul>
@@ -152,32 +94,17 @@ const HeaderOne = ({ aboutOverlay }) => {
         </Container>
       </header>
 
-      {/* about overlay */}
-      {aboutOverlay === false ? (
-        ""
-      ) : (
-        <AboutOverlay
-          activeStatus={offCanvasAboutActive}
-          getActiveStatus={setOffCanvasAboutActive}
-        />
-      )}
       {/* search overlay */}
       <SearchOverlay
         activeStatus={offCanvasSearchActive}
         getActiveStatus={setOffCanvasSearchActive}
       />
-
       {/* cart overlay */}
       <CartOverlay
         activeStatus={offCanvasCartActive}
         getActiveStatus={setOffCanvasCartActive}
       />
 
-      {/* wishlist overlay */}
-      <WishlistOverlay
-        activeStatus={offCanvasWishlistActive}
-        getActiveStatus={setOffCanvasWishlistActive}
-      />
       {/* Mobile Menu */}
       <MobileMenu
         activeStatus={offCanvasMobileMenuActive}

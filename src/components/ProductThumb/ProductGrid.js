@@ -26,10 +26,7 @@ const ProductGrid = ({
         <div className="product-grid">
           {/*=======  single product image  =======*/}
           <div className="product-grid__image">
-            <Anchor
-              path={`/shop/product-basic/${product.slug}`}
-              className="image-wrap"
-            >
+            <Anchor path="/shop/no-sidebar" className="image-wrap">
               <img
                 src={process.env.PUBLIC_URL + product.thumbImage[0]}
                 height={"220px"}
@@ -42,14 +39,9 @@ const ProductGrid = ({
           <div className="product-grid__content">
             <div className="title">
               <h3>
-                <Anchor path={`/shop/product-basic/${product.slug}`}>
-                  {product.name}
-                </Anchor>
+                <Anchor path="/shop/no-sidebar">{product.name}</Anchor>
               </h3>
-              {/* add to cart */}
-              <Anchor path={`/shop/product-basic/${product.slug}`}>
-                Explore Now
-              </Anchor>
+              <Anchor path="/shop/no-sidebar">Explore Now</Anchor>
             </div>
           </div>
         </div>

@@ -5,6 +5,12 @@ import MobileMenuNav from "./MobileMenuNav";
 import MobileMenuWidgets from "./MobileMenuWidgets";
 
 const MobileMenu = ({ activeStatus, getActiveStatus }) => {
+  const couponCodesSection = {
+    backgroundImage: `url("https://www.nicepng.com/png/detail/443-4431851_coupon-png-hd-coupon-ticket-png.png")`,
+    height: "120px",
+    backgroundSize: "cover",
+    marginBottom: "15px",
+  };
   return (
     <div className={clsx("offcanvas-mobile-menu", activeStatus && "active")}>
       <div
@@ -22,29 +28,26 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
           <div className="offcanvas-mobile-menu__content">
             {/* mobile search */}
             <MobileMenuSearch />
-
             {/* mobile nav menu */}
             <MobileMenuNav getActiveStatus={getActiveStatus} />
 
-            <div className="offcanvas-mobile-menu__middle">
-              <div className="lang-curr-style space-mb--20">
-                <span className="title">Choose Language </span>
-                <select>
-                  <option value="en">English</option>
-                  <option value="fn">French</option>
-                  <option value="de">Germany</option>
-                </select>
-              </div>
-              <div className="lang-curr-style">
-                <span className="title">Choose Currency</span>
-                <select>
-                  <option value="USD">USD</option>
-                  <option value="EUR">EUR</option>
-                  <option value="GBP">GBP</option>
-                </select>
-              </div>
+            <div
+              onClick={() => {
+                console.log("hii");
+              }}
+            >
+              <p
+                style={{
+                  fontWeight: "600",
+                  marginBottom: "2px",
+                  color: "black",
+                  paddingLeft: "10px",
+                }}
+              >
+                Coupons and Offers %
+              </p>
+              <p style={couponCodesSection}></p>
             </div>
-
             {/* mobile widgets */}
             <MobileMenuWidgets />
           </div>

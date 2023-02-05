@@ -1,6 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { MdViewComfy, MdApps, MdList } from "react-icons/md";
-import { IoMdFunnel } from "react-icons/io";
+import { IoMdFunnel, IoMdSearch } from "react-icons/io";
 import clsx from "clsx";
 import { setActiveLayout } from "../../lib/product";
 
@@ -10,19 +9,24 @@ const ShopHeader = ({
   getFilterSortParams,
   sortedProductCount,
   productCount,
-  getLayout,
   layoutClass,
-  listMode
 }) => {
+  const shopHeaderSearch = {
+    width: "100%",
+    padding: "5px 10px",
+    borderRadius: "5px",
+    backgroundColor: "#f2f2f2",
+    marginTop: "10px",
+  };
   return (
     <div className="shop-header">
       <Container className={clsx(layoutClass)}>
         <Row className="align-items-center">
-          <Col md={5} className="text-center text-md-start">
+          <Col md={6} className="text-center text-md-start">
             Showing {sortedProductCount} of {productCount} result
           </Col>
 
-          <Col md={7}>
+          <Col md={6} className="d-flex justify-content-around">
             <div className="shop-header__filter-icons justify-content-center justify-content-md-end">
               <div className="single-icon filter-dropdown">
                 <select
@@ -30,43 +34,10 @@ const ShopHeader = ({
                     getFilterSortParams("filterSort", e.target.value)
                   }
                 >
-                  <option value="default">Default</option>
+                  <option value="relevance">Relevance</option>
                   <option value="priceHighToLow">Price - High to Low</option>
                   <option value="priceLowToHigh">Price - Low to High</option>
                 </select>
-              </div>
-
-              <div className="single-icon grid-icons d-none d-lg-block">
-                <button
-                  onClick={(e) => {
-                    getLayout("grid three-column");
-                    setActiveLayout(e);
-                  }}
-                >
-                  <MdApps />
-                </button>
-
-                <button
-                  className="active"
-                  onClick={(e) => {
-                    getLayout("grid four-column");
-                    setActiveLayout(e);
-                  }}
-                >
-                  <MdViewComfy />
-                </button>
-                {listMode === false ? (
-                  ""
-                ) : (
-                  <button
-                    onClick={(e) => {
-                      getLayout("list");
-                      setActiveLayout(e);
-                    }}
-                  >
-                    <MdList />
-                  </button>
-                )}
               </div>
 
               <div className="single-icon advance-filter-icon">

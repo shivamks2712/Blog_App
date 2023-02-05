@@ -4,9 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Paginator from "react-hooks-paginator";
 import { SlideDown } from "react-slidedown";
 import { LayoutTwo } from "../../components/Layout";
-import { BreadcrumbOne } from "../../components/Breadcrumb";
 import { ShopHeader, ShopFilter, ShopProducts } from "../../components/Shop";
-import Anchor from "../../components/anchor";
 import { getSortedProducts } from "../../lib/product";
 
 const NoSidebar = () => {
@@ -22,7 +20,7 @@ const NoSidebar = () => {
   const [shopTopFilterStatus, setShopTopFilterStatus] = useState(false);
   const { products } = useSelector((state) => state.product);
 
-  const pageLimit = 20;
+  const pageLimit = 24;
 
   const getLayout = (layout) => {
     setLayout(layout);
@@ -53,20 +51,6 @@ const NoSidebar = () => {
   return (
     <LayoutTwo>
       {/* breadcrumb */}
-      <BreadcrumbOne
-        pageTitle="Shop No Sidebar"
-        backgroundImage="/assets/images/backgrounds/breadcrumb-bg-1.png"
-      >
-        <ul className="breadcrumb__list">
-          <li>
-            <Anchor path="/">
-              Home
-            </Anchor>
-          </li>
-
-          <li>Shop No Sidebar</li>
-        </ul>
-      </BreadcrumbOne>
       <div className="shop-page-content">
         {/* shop page header */}
         <ShopHeader

@@ -4,7 +4,7 @@ import { Row } from "react-bootstrap";
 const ShopProducts = ({ products, layout }) => {
   return (
     <div className="shop-products">
-      <Row className={layout}>
+      <Row className="d-flex justify-content-around">
         <ProductGridListWrapper
           products={products}
           bottomSpace="space-mb--50"

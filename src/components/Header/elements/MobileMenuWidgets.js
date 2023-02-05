@@ -1,49 +1,46 @@
-import {
-  IoIosPhonePortrait,
-  IoMdMail,
-  IoLogoTwitter,
-  IoLogoFacebook,
-  IoLogoInstagram,
-  IoLogoPinterest,
-  IoMdPerson
-} from "react-icons/io";
+import { IoMdPower, IoMdShare, IoMdInformationCircle } from "react-icons/io";
+import { HiShoppingBag } from "react-icons/hi";
+import { FaAddressCard } from "react-icons/fa";
 import Anchor from "../../anchor";
 
 const MobileMenuWidgets = () => {
   return (
-    <div className="offcanvas-mobile-menu__widgets">
+    <div className="offcanvas-mobile-menu__widgets ">
       <div className="contact-widget space-mb--30">
-        <ul>
+        <p className="fs-6 ">Your Information</p>
+        <ul className="px-2 text-black">
           <li>
-            <IoMdPerson />
-            <Anchor path="/other/login-register">
-              Login / Register
+            <Anchor path="/user/login">
+              <HiShoppingBag fontSize={20} />
+              Orders
             </Anchor>
           </li>
           <li>
-            <IoIosPhonePortrait />
-            <a href="tel://12452456012">(1245) 2456 012 </a>
-          </li>
-          <li>
-            <IoMdMail />
-            <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+            <Anchor path="/user/login">
+              <FaAddressCard fontSize={20} />
+              Manage Address
+            </Anchor>
           </li>
         </ul>
-      </div>
-
-      <div className="social-widget">
-        <a href="https://www.twitter.com" target="_blank">
-          <IoLogoTwitter />
-        </a>
-        <a href="https://www.instagram.com" target="_blank">
-          <IoLogoInstagram />
-        </a>
-        <a href="https://www.facebook.com" target="_blank">
-          <IoLogoFacebook />
-        </a>
-        <a href="https://www.pinterest.com" target="_blank">
-          <IoLogoPinterest />
-        </a>
+        <p className="fs-6 mt-4 ">Other Informations</p>
+        <ul className="px-2 text-black">
+          <li>
+            <Anchor path="/user/login">
+              <IoMdShare fontSize={20} />
+              Share the app
+            </Anchor>
+          </li>
+          <li>
+            <Anchor path="/user/login">
+              <IoMdInformationCircle fontSize={20} />
+              About Us
+            </Anchor>
+          </li>
+          <li>
+            <IoMdPower fontSize={20} />
+            <Anchor path="/">Logout</Anchor>
+          </li>
+        </ul>
       </div>
     </div>
   );

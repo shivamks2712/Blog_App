@@ -165,22 +165,22 @@ header {
     .multilevel-header {
       padding-top: 0;
 
-@include respond(extra-large-mobile) {
+      @include respond(extra-large-mobile) {
         padding-top: 30px;
       }
 
-@include respond(large-mobile) {
+      @include respond(large-mobile) {
         padding-top: 30px;
       }
 
       &__top {
         display: none;
 
-@include respond(extra-large-mobile) {
+        @include respond(extra-large-mobile) {
           display: flex;
         }
 
-@include respond(large-mobile) {
+        @include respond(large-mobile) {
           display: flex;
         }
       }
@@ -196,12 +196,12 @@ header {
 .multilevel-header {
   padding-top: 40px;
 
-@include respond(extra-large-mobile) {
+  @include respond(extra-large-mobile) {
     padding-top: 30px;
     padding-bottom: 30px;
   }
 
-@include respond(large-mobile) {
+  @include respond(large-mobile) {
     padding-top: 30px;
     padding-bottom: 30px;
   }
@@ -347,7 +347,7 @@ header {
 
         text-align: left;
 
-@include respond(small-desktop) {
+        @include respond(small-desktop) {
           margin-right: 30px;
         }
 
@@ -427,7 +427,7 @@ header {
 
         margin-right: 30px;
 
-@include respond(extra-small-mobile) {
+        @include respond(extra-small-mobile) {
           margin-right: 15px;
         }
 
@@ -463,11 +463,11 @@ header {
 
             fill: $black--two;
 
-@include respond(extra-large-mobile) {
+            @include respond(extra-large-mobile) {
               font-size: 25px;
             }
 
-@include respond(large-mobile) {
+            @include respond(large-mobile) {
               font-size: 23px;
             }
           }
@@ -609,7 +609,7 @@ header {
 
         padding: 0 30px;
 
-@include respond(small-desktop) {
+        @include respond(small-desktop) {
           padding: 0 20px;
         }
 
@@ -634,7 +634,7 @@ header {
 
         padding: 0 30px;
 
-@include respond(small-desktop) {
+        @include respond(small-desktop) {
           padding: 0 20px;
         }
 
@@ -653,11 +653,11 @@ header {
     max-width: 350px;
     padding: 30px;
 
-@include respond(large-desktop) {
+    @include respond(large-desktop) {
       left: -100px;
     }
 
-@include respond(small-desktop) {
+    @include respond(small-desktop) {
       min-width: 230px;
     }
 
@@ -744,7 +744,7 @@ header {
       background-color: $white;
       box-shadow: -2px 2px 81px -27px rgba($black, 0.3);
 
-@include respond(small-desktop) {
+      @include respond(small-desktop) {
         right: 110%;
         left: auto;
       }
@@ -804,26 +804,26 @@ header {
         border-bottom: 2px solid $black--two;
         background: none;
 
-@include respond(extra-large-mobile) {
+        @include respond(extra-large-mobile) {
           font-size: 40px;
         }
 
-@include respond(large-mobile) {
+        @include respond(large-mobile) {
           font-size: 40px;
         }
 
-@include respond(small-mobile) {
+        @include respond(small-mobile) {
           font-size: 30px;
         }
 
-@include respond(extra-small-mobile) {
+        @include respond(extra-small-mobile) {
           font-size: 20px;
         }
       }
       ::placeholder {
         opacity: 1; /* Firefox */
 
-/* Chrome, Firefox, Opera, Safari 10.1+ */
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: $grey--nine;
       }
 
@@ -919,7 +919,7 @@ header {
 
     background-color: $white;
 
-@include respond(extra-small-mobile) {
+    @include respond(extra-small-mobile) {
       width: 300px;
     }
   }
@@ -1026,7 +1026,6 @@ header {
           .content {
             width: calc(100% - 80px);
 
-
             .cart-item-variation {
               margin-bottom: 10px;
               span {
@@ -1132,7 +1131,6 @@ header {
           &:last-child {
             margin-bottom: 0;
           }
-
 
           &:hover {
             border-color: $red--one;
@@ -1397,7 +1395,6 @@ header {
     transform: translateX(100%);
   }
 
-
   &__close {
     font-size: 30px;
 
@@ -1442,11 +1439,11 @@ header {
     justify-content: space-between;
 
     height: 100%;
-    padding: 90px 35px 70px 35px;
+    padding: 90px 25px 70px 25px;
 
-@include respond(extra-small-mobile) {
-      padding-right: 25px;
-      padding-left: 25px;
+    @include respond(extra-small-mobile) {
+      padding-right: 15px;
+      padding-left: 15px;
     }
   }
 

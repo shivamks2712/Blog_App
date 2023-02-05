@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosClose, IoMdCart } from "react-icons/io";
-import { addToCart, decreaseQuantity, deleteFromCart, deleteAllFromCart } from "../../store/slices/cart-slice";
+import {
+  addToCart,
+  decreaseQuantity,
+  deleteFromCart,
+  deleteAllFromCart,
+} from "../../store/slices/cart-slice";
 import { getDiscountPrice, cartItemStock } from "../../lib/product";
 import { LayoutTwo } from "../../components/Layout";
 import { BreadcrumbOne } from "../../components/Breadcrumb";
@@ -13,7 +18,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector((state) => state.cart);
-  
+
   let cartTotalPrice = 0;
 
   useEffect(() => {
@@ -22,22 +27,6 @@ const Cart = () => {
 
   return (
     <LayoutTwo>
-      {/* breadcrumb */}
-      <BreadcrumbOne
-        pageTitle="Cart"
-        backgroundImage="/assets/images/backgrounds/breadcrumb-bg-2.jpg"
-      >
-        <ul className="breadcrumb__list">
-          <li>
-            <Anchor path="/">
-              Home
-            </Anchor>
-          </li>
-
-          <li>Cart</li>
-        </ul>
-      </BreadcrumbOne>
-
       {/* cart content */}
       <div className="cart-content space-mt--r130 space-mb--r130">
         <Container>
@@ -68,19 +57,22 @@ const Cart = () => {
                       return (
                         <tr key={i}>
                           <td className="product-thumbnail">
-                            <Anchor path={`/shop/product-basic/${product.slug}`}>
-                                <img
-                                  src={
-                                    process.env.PUBLIC_URL +
-                                    product.thumbImage[0]
-                                  }
-                                  className="img-fluid"
-                                  alt=""
-                                />
+                            <Anchor
+                              path={`/shop/product-basic/${product.slug}`}
+                            >
+                              <img
+                                src={
+                                  process.env.PUBLIC_URL + product.thumbImage[0]
+                                }
+                                className="img-fluid"
+                                alt=""
+                              />
                             </Anchor>
                           </td>
                           <td className="product-name">
-                            <Anchor path={`/shop/product-basic/${product.slug}`}>
+                            <Anchor
+                              path={`/shop/product-basic/${product.slug}`}
+                            >
                               {product.name}
                             </Anchor>
                             {product.selectedProductColor &&
@@ -119,10 +111,12 @@ const Cart = () => {
                               <button
                                 className="inc qtybutton"
                                 onClick={() =>
-                                  dispatch(addToCart({
-                                    ...product,
-                                    quantity: quantityCount
-                                  }))
+                                  dispatch(
+                                    addToCart({
+                                      ...product,
+                                      quantity: quantityCount,
+                                    })
+                                  )
                                 }
                                 disabled={
                                   product !== undefined &&
@@ -148,7 +142,9 @@ const Cart = () => {
 
                           <td className="product-remove">
                             <button
-                              onClick={() => dispatch(deleteFromCart(product.cartItemId))}
+                              onClick={() =>
+                                dispatch(deleteFromCart(product.cartItemId))
+                              }
                             >
                               <IoIosClose />
                             </button>
@@ -214,7 +210,7 @@ const Cart = () => {
                       path="/other/checkout"
                       className="lezada-button lezada-button--medium"
                     >
-                        proceed to checkout
+                      proceed to checkout
                     </Anchor>
                   </div>
                 </div>
@@ -229,8 +225,11 @@ const Cart = () => {
                   </div>
                   <div className="item-empty-area__text">
                     <p className="space-mb--30">No items found in cart</p>
-                    <Anchor path="/shop/left-sidebar" className="lezada-button lezada-button--medium">
-                        Shop Now
+                    <Anchor
+                      path="/shop/left-sidebar"
+                      className="lezada-button lezada-button--medium"
+                    >
+                      Shop Now
                     </Anchor>
                   </div>
                 </div>
