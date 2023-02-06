@@ -1,0 +1,14 @@
+.locationBoxAddressForm {
+  label {
+    font-size: smaller;
+  }
+  input {
+    height: 25px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
+  }
+  :focus {
+    border: 1px solid black;
+  }
+}

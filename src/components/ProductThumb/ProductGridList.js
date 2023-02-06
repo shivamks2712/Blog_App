@@ -67,7 +67,7 @@ const ProductGridList = ({
               >
                 <button
                   onClick={() => setModalShow(true)}
-                  className="d-none d-lg-block"
+                  className="d-lg-block"
                 >
                   <MdOutlineZoomOutMap />
                 </button>
@@ -95,7 +95,7 @@ const ProductGridList = ({
                   }
                 >
                   {cartItem !== undefined
-                    ? `Added To Cart  {${cartItem.quantity}}`
+                    ? `Added To Cart  [${cartItem.quantity}]`
                     : "Add to cart"}
                 </button>
               ) : (

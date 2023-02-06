@@ -12,13 +12,13 @@ const MobileMenuWidgets = () => {
           <li>
             <Anchor path="/user/login">
               <HiShoppingBag fontSize={20} />
-              Orders
+              My Orders
             </Anchor>
           </li>
           <li>
             <Anchor path="/user/login">
               <FaAddressCard fontSize={20} />
-              Manage Address
+              Manage Addresses
             </Anchor>
           </li>
         </ul>

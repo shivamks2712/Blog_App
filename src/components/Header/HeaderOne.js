@@ -3,10 +3,8 @@ import { Container } from "react-bootstrap";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { IoIosSearch, IoMdPerson, IoIosCart, IoIosMenu } from "react-icons/io";
-import AboutOverlay from "./elements/AboutOverlay";
 import SearchOverlay from "./elements/SearchOverlay";
 import CartOverlay from "./elements/CartOverlay";
-import WishlistOverlay from "./elements/WishlistOverlay";
 import MobileMenu from "./elements/MobileMenu";
 import Anchor from "../anchor";
 
