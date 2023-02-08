@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Anchor from "../../anchor";
-import { BsWallet } from "react-icons/bs";
+import { TbDiscount2 } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import { MdOutlinePayment } from "react-icons/md";
 const MobileMenuNav = ({ getActiveStatus }) => {
@@ -52,7 +52,7 @@ const MobileMenuNav = ({ getActiveStatus }) => {
   };
   return (
     <nav
-      className="offcanvas-mobile-menu__navigation"
+      className="offcanvas-mobile-menu__navigation mb-3"
       id="offcanvas-mobile-menu__navigation"
     >
       <p className="fs-4 fw-bolder fc-black mb-2" style={{ color: "black" }}>
@@ -60,13 +60,13 @@ const MobileMenuNav = ({ getActiveStatus }) => {
       </p>
       <span className="fs-6">9835838814</span>
       <ul
-        className="d-flex justify-content-around  mt-3  fs-4 "
+        className="d-flex justify-content-around  mt-3   "
         style={{ backgroundColor: "#E6FCE4", borderRadius: "8px" }}
       >
         <li className="menu-item">
           <Anchor style={reactIconStyle} path="/">
-            <BsWallet />
-            <span style={spanIconStyle}>Wallet</span>
+            <TbDiscount2 />
+            <span style={spanIconStyle}>Offers</span>
           </Anchor>
         </li>
         <li className="menu-item">

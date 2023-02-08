@@ -10,7 +10,6 @@ import {
 } from "../../store/slices/cart-slice";
 import { getDiscountPrice, cartItemStock } from "../../lib/product";
 import { LayoutTwo } from "../../components/Layout";
-import { BreadcrumbOne } from "../../components/Breadcrumb";
 import Anchor from "../../components/anchor";
 
 const Cart = () => {
@@ -35,18 +34,21 @@ const Cart = () => {
               <Col lg={12}>
                 {/* cart table */}
                 <table className="cart-table">
-                  <thead>
-                    <tr>
-                      <th className="product-name" colSpan="2">
-                        Product
-                      </th>
-                      <th className="product-price">Price</th>
-                      <th className="product-quantity">Quantity</th>
-                      <th className="product-subtotal">Total</th>
-                      <th className="product-remove">&nbsp;</th>
+                  <tbody className="p-2">
+                    <tr className="d-flex justify-content-between align-items-center ">
+                      <td className="product-thumbnail">Product</td>
+                      <td className="product-name ">Name</td>
+
+                      <td className="product-price cart-product-header-price">
+                        Price
+                      </td>
+
+                      <td className="product-price">Quantity</td>
+
+                      <td className="total-price">Total </td>
+
+                      <td className="product-remove"></td>
                     </tr>
-                  </thead>
-                  <tbody>
                     {cartItems.map((product, i) => {
                       const discountedPrice = getDiscountPrice(
                         product.price,
@@ -55,7 +57,10 @@ const Cart = () => {
 
                       cartTotalPrice += discountedPrice * product.quantity;
                       return (
-                        <tr key={i}>
+                        <tr
+                          className="d-flex justify-content-between align-items-center"
+                          key={i}
+                        >
                           <td className="product-thumbnail">
                             <Anchor
                               path={`/shop/product-basic/${product.slug}`}
@@ -64,7 +69,7 @@ const Cart = () => {
                                 src={
                                   process.env.PUBLIC_URL + product.thumbImage[0]
                                 }
-                                className="img-fluid"
+                                className="img-fluid mx-1"
                                 alt=""
                               />
                             </Anchor>
@@ -75,17 +80,6 @@ const Cart = () => {
                             >
                               {product.name}
                             </Anchor>
-                            {product.selectedProductColor &&
-                            product.selectedProductSize ? (
-                              <div className="product-variation">
-                                <span>
-                                  Color: {product.selectedProductColor}
-                                </span>
-                                <span>Size: {product.selectedProductSize}</span>
-                              </div>
-                            ) : (
-                              ""
-                            )}
                           </td>
 
                           <td className="product-price">
@@ -168,7 +162,7 @@ const Cart = () => {
                                 placeholder="Enter your coupon code"
                               />
                             </Col>
-                            <Col md={5}>
+                            <Col md={5} sm={5}>
                               <button className="lezada-button lezada-button--medium">
                                 apply coupon
                               </button>
@@ -207,7 +201,7 @@ const Cart = () => {
                   </table>
                   <div className="cart-calculation-button text-center">
                     <Anchor
-                      path="/other/checkout"
+                      path="/user/checkout"
                       className="lezada-button lezada-button--medium"
                     >
                       proceed to checkout
@@ -226,7 +220,7 @@ const Cart = () => {
                   <div className="item-empty-area__text">
                     <p className="space-mb--30">No items found in cart</p>
                     <Anchor
-                      path="/shop/left-sidebar"
+                      path="/"
                       className="lezada-button lezada-button--medium"
                     >
                       Shop Now
@@ -241,28 +235,5 @@ const Cart = () => {
     </LayoutTwo>
   );
 };
-
-// const mapStateToProps = (state) => {
-//   return {
-//     cartItems: state.cartData
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addToCart: (item, addToast, quantityCount) => {
-//       dispatch(addToCart(item, addToast, quantityCount));
-//     },
-//     decreaseQuantity: (item, addToast) => {
-//       dispatch(decreaseQuantity(item, addToast));
-//     },
-//     deleteFromCart: (item, addToast) => {
-//       dispatch(deleteFromCart(item, addToast));
-//     },
-//     deleteAllFromCart: (addToast) => {
-//       dispatch(deleteAllFromCart(addToast));
-//     }
-//   };
-// };
 
 export default Cart;

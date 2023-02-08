@@ -3,28 +3,13 @@ import { useState } from "react";
 import clsx from "clsx";
 import MobileMenuNav from "./MobileMenuNav";
 import MobileMenuWidgets from "./MobileMenuWidgets";
-import LocationBox from "../../Addresses/LocationBox";
+import ImageSliderOffers from "../../ImageSlider/ImageSliderOffers";
+import Anchor from "../../anchor";
 
 const MobileMenu = ({ activeStatus, getActiveStatus }) => {
-  const couponCodesSection = {
-    backgroundImage: `url("https://www.nicepng.com/png/detail/443-4431851_coupon-png-hd-coupon-ticket-png.png")`,
-    height: "120px",
-    backgroundSize: "cover",
-    marginBottom: "15px",
-  };
   const currentAddress = "Rohini Sector 16 G2-12/13 1st floor 110085";
   const [locationBox, setlocationBox] = useState(false);
-  const locationBoxStyle = {
-    position: "absolute",
-    width: "100%",
-    height: "100vh",
-    margin: 0,
-    right: "0",
-    zIndex: "15",
-    display: locationBox ? "block" : "none",
-    backgroundColor: "#f7f5f5",
-    top: "100%",
-  };
+
   return (
     <div className={clsx("offcanvas-mobile-menu", activeStatus && "active")}>
       <div
@@ -47,7 +32,10 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
         <div className="offcanvas-mobile-menu__content-wrapper">
           <div className="offcanvas-mobile-menu__content">
             {/* current address */}
-            <div className="offcanvas-mobile-menu__search ">
+            <Anchor
+              path="/user/address"
+              className="offcanvas-mobile-menu__search "
+            >
               <div onClick={() => setlocationBox(!locationBox)}>
                 <b className="text-black">Deliver at</b>
                 <p
@@ -67,28 +55,29 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
                   />
                 </p>
               </div>
-              {/* location dropdown */}
-              <div style={locationBoxStyle} className="locationAccess p-3">
-                <LocationBox active={locationBox} />
-              </div>
-            </div>
+            </Anchor>
 
             {/* mobile nav menu */}
             <MobileMenuNav getActiveStatus={getActiveStatus} />
 
-            <div>
-              <p
-                style={{
-                  fontWeight: "600",
-                  marginBottom: "2px",
-                  color: "black",
-                  paddingLeft: "10px",
-                }}
-              >
-                Coupons and Offers %
-              </p>
-              <p style={couponCodesSection}></p>
-            </div>
+            <p
+              style={{
+                fontWeight: "600",
+                margin: "2px auto",
+                color: "black",
+                paddingLeft: "10px",
+              }}
+            >
+              Deal of the day
+            </p>
+            <ImageSliderOffers
+              imageSliderData={[
+                "ImageSliderOffers",
+                "ImageSliderOffers",
+                "ImageSliderOffers",
+              ]}
+            />
+
             {/* mobile widgets */}
             <MobileMenuWidgets />
           </div>

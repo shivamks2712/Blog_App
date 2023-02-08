@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Anchor } from "react-bootstrap";
 import Swiper, { SwiperSlide } from "../swiper";
 
 const params = {
@@ -8,18 +8,18 @@ const params = {
   grabCursor: true,
   breakpoints: {
     320: {
-      slidesPerView: 1
+      slidesPerView: 1,
     },
     640: {
-      slidesPerView: 2
+      slidesPerView: 2,
     },
     768: {
-      slidesPerView: 3
+      slidesPerView: 3,
     },
     1024: {
-      slidesPerView: 4
-    }
-  }
+      slidesPerView: 4,
+    },
+  },
 };
 
 const ImageSliderOne = ({ imageSliderData }) => {
@@ -36,9 +36,9 @@ const ImageSliderOne = ({ imageSliderData }) => {
               <Swiper options={params}>
                 {imageSliderData.map((single, i) => (
                   <SwiperSlide className="single-image text-center" key={i}>
-                    <a href={single.url} target="_blank">
+                    <a target="_blank">
                       <img
-                        src={process.env.PUBLIC_URL + single.image}
+                        src={"process.env.PUBLIC_URL + single.image"}
                         className="img-fluid"
                         alt=""
                       />

@@ -1,8 +1,6 @@
-
 /*=============================================
 =            checkout            =
 =============================================*/
-
 
 /*-- Checkout Title --*/
 .checkout-title {
@@ -161,7 +159,7 @@
 
   background-color: $grey--twentyTwo;
 
-// Responsive
+  // Responsive
 
   @include respond(small-mobile) {
     padding: 30px;
@@ -226,7 +224,7 @@
 
   background-color: $grey--twentyTwo;
 
-// Responsive
+  // Responsive
 
   @include respond(small-mobile) {
     padding: 30px;
@@ -391,4 +389,14 @@
 }
 
 /*=====  End of checkout  ======*/
-
+// custom designs
+.checkoutDelieverAddress {
+  span {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 30px) {
+    span {
+      font-size: 13px;
+    }
+  }
+}

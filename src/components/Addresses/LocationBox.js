@@ -1,14 +1,8 @@
-import {
-  IoMdLocate,
-  IoIosSearch,
-  IoIosCheckmarkCircle,
-  IoIosCloseCircleOutline,
-  IoIosAddCircle,
-} from "react-icons/io";
-import { useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
+import { IoMdLocate } from "react-icons/io";
+import { useEffect } from "react";
+import AddressListWrapper from "./AddressListWrapper";
 
-const LocatinBox = ({ active }) => {
+const LocatinBox = ({ setLocation }) => {
   const addressType = {
     border: "1px solid grey",
     fontSize: "12px",
@@ -18,69 +12,16 @@ const LocatinBox = ({ active }) => {
   };
   const saveButtonStyle = {
     all: "unset",
-    padding: "10px 0px",
-    width: "80%",
+    padding: "10px 25px",
     borderRadius: "6px",
     color: "white",
     fontSize: "16px",
     backgroundColor: "green",
   };
-  const Address = ({ street, flatno, type }) => {
-    const [deleteConfirm, setdeleteConfirm] = useState(false);
-    return (
-      <div
-        style={{ borderBottom: "1px solid grey" }}
-        className="container py-2 "
-      >
-        <div className="row position-relative">
-          <div className="col-10">
-            <b className="text-black"> {type}</b>
-            <p style={{ fontSize: "smaller" }}>
-              {(street + "," + flatno).substring(0, 35)}
-            </p>
-          </div>
-          <div className="col-2 m-auto">
-            <AiFillDelete
-              onClick={() => {
-                setdeleteConfirm(true);
 
-                setTimeout(() => {
-                  setdeleteConfirm(false);
-                }, 3000);
-              }}
-              size={22}
-              color="black"
-            />
-          </div>
-
-          <div
-            className={`d-${
-              active && deleteConfirm ? "flex" : "none"
-            } position-absolute text-black deleteConfirmationBox`}
-            style={{
-              top: "0px",
-              width: "100%",
-              height: "100%",
-              alignItems: "center",
-              justifyContent: "space-around",
-              zIndex: 4,
-              backgroundColor: "white",
-            }}
-          >
-            <span>Confirm Delete</span>
-            <IoIosCloseCircleOutline
-              size={22}
-              onClick={() => setdeleteConfirm(false)}
-              color="red"
-            />
-            <IoIosCheckmarkCircle size={22} color="green" />
-          </div>
-        </div>
-      </div>
-    );
-  };
+  // Address Form
   const fullAdress = (
-    <form className="locationBoxAddressForm my-3 px-1 position-relative">
+    <form className="locationBoxAddressForm m-2">
       <label for="flatNo">Flat,HouseNo,Floor,Tower</label>
       <input autoFocus type="text" name="flatNo" id="flatNo" />
       <label for="street">Street,Society,Landmark</label>
@@ -91,27 +32,39 @@ const LocatinBox = ({ active }) => {
       <input type="text" name="pinCode" id="recipName" />
     </form>
   );
+
+  // Fetching Current Location
+  function getLocation() {
+    if (!navigator.geolocation) {
+      console.log("Geolocation API not supported by this browser.");
+    } else {
+      console.log("Checking location...");
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  }
+
+  function error() {
+    console.log("Geolocation error!");
+  }
+
+  function success(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    setLocation({ lat: lat, lng: lng });
+    console.log(lat, lng);
+  }
+  useEffect(() => {
+    setTimeout(() => getLocation(), 2500);
+  }, []);
+
   return (
-    <div className="locationBox">
-      <b className="text-black my-0 pb-2">Select a location</b>
-      <div
-        style={{
-          backgroundColor: "#ebebeb",
-        }}
-        className="d-flex align-items-center px-1 my-1"
-      >
-        <IoIosSearch size={22} />
-        <input
-          style={{ background: "none", fontSize: "15px", paddingLeft: "5px" }}
-          type="search"
-          placeholder="Start typing to search"
-          id="locationBoxInputManualLocation"
-        />
-      </div>
-      <p style={{ color: "#8db8fc" }} className="mx-2">
-        <IoMdLocate fontSize={25} style={{ paddingRight: "5px" }} />
-        Use current location
+    <div className="locationBox m-3 px-4 py-3">
+      <b className="text-black ">Select a location</b>
+      <p onClick={() => getLocation()} className="mt-2 text-black">
+        <IoMdLocate size={20} /> Use current location
       </p>
+      <input type="text" id="userLocation" placeholder="Search location" />
+
       <hr />
       <div className="d-flex justify-content-evenly ">
         {["Home", "Office", "Hotel", "other"].map((e, i) => (
@@ -125,31 +78,20 @@ const LocatinBox = ({ active }) => {
         <button style={saveButtonStyle}>Save Address</button>
       </center>
       <hr />
-      <b className="text-black m-2 py-5">
-        Saved Addresses{" "}
-        <IoIosAddCircle
-          onClick={() => console.log("hii")}
-          style={{ float: "right", marginRight: "10px" }}
-        ></IoIosAddCircle>{" "}
-      </b>
-      <div className="mt-2">
-        <Address
-          type="Home"
-          street="sec-16 rohini"
-          flatno="g2-12/13 first floor"
-        />
-        <Address
-          type="Office"
-          street="f-block gurgaon"
-          flatno="trade tower dlf first floor"
-        />{" "}
-        <Address
-          type="Home"
-          street="sec-16 rohini"
-          flatno="g2-12/13 first floor"
-        />
-      </div>
+      <b className="text-black py-5">Saved Addresses </b>
+      <AddressListWrapper addressLists={savedAddressLists} />
     </div>
   );
 };
+
+const savedAddressLists = [
+  { type: "Home", street: "sec-16 rohini", flatno: "g2-12/13 first floor" },
+  {
+    type: "Office",
+    street: "Cyber city gugaon",
+    flatno: "dlf trade tower first floor",
+  },
+  { type: "Hotel", street: "talwandi kota", flatno: "ortus room no-325" },
+];
+
 export default LocatinBox;

@@ -12,3 +12,13 @@
     border: 1px solid black;
   }
 }
+.addressList {
+  @include respond(large-mobile) {
+    p {
+      font-size: 16px;
+    }
+  }
+}
+.addressListWrapper {
+  max-width: 22rem;
+}

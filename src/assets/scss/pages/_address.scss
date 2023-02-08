@@ -1,0 +1,24 @@
+.locationBox {
+  max-width: 16rem;
+  border-left: 1px solid green;
+}
+.addressContainer {
+  overflow: hidden;
+}
+.googleMapLocator {
+  width: 50%;
+}
+@media only screen and (max-width: 612px) {
+  .addressContainer {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .locationBox {
+    border: none;
+  }
+  .googleMapLocator {
+    overflow: hidden;
+    width: 100%;
+    height: 25rem;
+  }
+}
