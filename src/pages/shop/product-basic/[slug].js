@@ -16,8 +16,6 @@ const ProductBasic = ({ product }) => {
   });
 
   const { cartItems } = useSelector((state) => state.cart);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
-  const { compareItems } = useSelector((state) => state.compare);
 
   const discountedPrice = getDiscountPrice(
     product.price,
@@ -26,12 +24,6 @@ const ProductBasic = ({ product }) => {
 
   const productPrice = product.price.toFixed(2);
   const cartItem = cartItems.find((cartItem) => cartItem.id === product.id);
-  const wishlistItem = wishlistItems.find(
-    (wishlistItem) => wishlistItem.id === product.id
-  );
-  const compareItem = compareItems.find(
-    (compareItem) => compareItem.id === product.id
-  );
 
   return (
     <LayoutTwo>
@@ -52,8 +44,6 @@ const ProductBasic = ({ product }) => {
                 discountedPrice={discountedPrice}
                 cartItems={cartItems}
                 cartItem={cartItem}
-                wishlistItem={wishlistItem}
-                compareItem={compareItem}
               />
             </Col>
           </Row>

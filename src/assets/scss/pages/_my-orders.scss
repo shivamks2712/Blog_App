@@ -1,0 +1,59 @@
+/*=============================================
+=            my account            =
+=============================================*/
+
+.my-account-area {
+  &__content {
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid $grey--ten;
+
+    @include respond(large-mobile) {
+      padding: 20px 15px;
+    }
+
+    > h3 {
+      font-size: 20px;
+      font-weight: 600;
+
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+
+      border-bottom: 1px solid $grey--eleven;
+    }
+    > div.supportNav {
+      font-size: 18px;
+      @include respond(small-mobile) {
+        font-size: 15;
+      }
+      @include respond(extra-small-mobile) {
+        font-size: 13;
+        span {
+          font-size: 10px !important;
+        }
+      }
+      font-weight: 600;
+
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+
+      border-bottom: 1px solid $grey--eleven;
+    }
+  }
+}
+.orderIdDetails {
+  @include respond(large-mobile) {
+    font-size: 14px;
+    span {
+      margin: 5px !important;
+    }
+  }
+}
+button.orderViewButton {
+  all: unset;
+  border: 1px solid grey;
+  border-radius: 8px;
+  color: green;
+}
+
+/*=====  End of my account  ======*/

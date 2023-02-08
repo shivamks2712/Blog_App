@@ -13,9 +13,7 @@ const OrderTracking = () => {
       >
         <ul className="breadcrumb__list">
           <li>
-            <Anchor path="/">
-              Home
-            </Anchor>
+            <Anchor path="/">Home</Anchor>
           </li>
 
           <li>Order Tracking</li>

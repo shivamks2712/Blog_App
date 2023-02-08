@@ -10,7 +10,7 @@ const MobileMenuWidgets = () => {
         <p className="fs-6 ">Your Information</p>
         <ul className="px-2 text-black">
           <li>
-            <Anchor path="/user/login">
+            <Anchor path="/orders/my-orders">
               <HiShoppingBag fontSize={20} />
               My Orders
             </Anchor>

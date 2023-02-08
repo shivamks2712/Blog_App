@@ -59,24 +59,25 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
 
             {/* mobile nav menu */}
             <MobileMenuNav getActiveStatus={getActiveStatus} />
-
-            <p
-              style={{
-                fontWeight: "600",
-                margin: "2px auto",
-                color: "black",
-                paddingLeft: "10px",
-              }}
-            >
-              Deal of the day
-            </p>
-            <ImageSliderOffers
-              imageSliderData={[
-                "ImageSliderOffers",
-                "ImageSliderOffers",
-                "ImageSliderOffers",
-              ]}
-            />
+            <div>
+              <p
+                style={{
+                  fontWeight: "600",
+                  margin: "2px auto",
+                  color: "black",
+                  paddingLeft: "10px",
+                }}
+              >
+                Deal of the day
+              </p>
+              <ImageSliderOffers
+                imageSliderData={[
+                  "ImageSliderOffers",
+                  "ImageSliderOffers",
+                  "ImageSliderOffers",
+                ]}
+              />
+            </div>
 
             {/* mobile widgets */}
             <MobileMenuWidgets />
