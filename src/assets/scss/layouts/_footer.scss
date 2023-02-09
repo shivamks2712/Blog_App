@@ -128,28 +128,28 @@
 .footer-single-widget {
   flex-basis: 17.5%;
 
-@include respond (small-desktop) {
+  @include respond(small-desktop) {
     flex-basis: 33.33%;
   }
 
-@include respond (extra-large-mobile) {
+  @include respond(extra-large-mobile) {
     flex-basis: 33.33%;
   }
 
-@include respond (large-mobile) {
+  @include respond(large-mobile) {
     flex-basis: 50%;
   }
 
-@include respond (extra-small-mobile) {
+  @include respond(extra-small-mobile) {
     flex-basis: 100%;
   }
 
   &:nth-last-child(2) {
-    @include respond (small-desktop) {
+    @include respond(small-desktop) {
       flex-grow: 0;
     }
 
-@include respond (extra-large-mobile) {
+    @include respond(extra-large-mobile) {
       flex-grow: 0;
     }
   }
@@ -159,51 +159,50 @@
 
     max-width: 30%;
 
-@include respond (small-desktop) {
+    @include respond(small-desktop) {
       flex-grow: 0;
 
       max-width: 50%;
     }
 
-@include respond (extra-large-mobile) {
+    @include respond(extra-large-mobile) {
       flex-grow: 0;
 
       max-width: 50%;
     }
 
-@include respond (large-mobile) {
+    @include respond(large-mobile) {
       flex-basis: 100%;
 
       max-width: 100%;
     }
   }
 
-
   &--style2 {
     flex-basis: 13.33%;
 
-@include respond (small-desktop) {
+    @include respond(small-desktop) {
       flex-basis: 33.33%;
     }
 
-@include respond (extra-large-mobile) {
+    @include respond(extra-large-mobile) {
       flex-basis: 33.33%;
     }
 
-@include respond (large-mobile) {
+    @include respond(large-mobile) {
       flex-basis: 50%;
     }
 
-@include respond (extra-small-mobile) {
+    @include respond(extra-small-mobile) {
       flex-basis: 100%;
     }
 
     &:nth-last-child(2) {
-      @include respond (small-desktop) {
+      @include respond(small-desktop) {
         flex-grow: 0;
       }
 
-@include respond (extra-large-mobile) {
+      @include respond(extra-large-mobile) {
         flex-grow: 0;
       }
     }
@@ -214,19 +213,19 @@
 
       max-width: 30%;
 
-@include respond (small-desktop) {
+      @include respond(small-desktop) {
         flex-grow: 0;
 
         max-width: 50%;
       }
 
-@include respond (extra-large-mobile) {
+      @include respond(extra-large-mobile) {
         flex-grow: 0;
 
         max-width: 50%;
       }
 
-@include respond (large-mobile) {
+      @include respond(large-mobile) {
         flex-basis: 100%;
 
         max-width: 100%;
@@ -387,7 +386,6 @@
 
 .scroll-top {
   font-size: 25px;
-
   position: fixed;
   z-index: 999;
   right: 25px;
@@ -395,7 +393,6 @@
 
   width: 50px;
   height: 50px;
-
   text-align: center;
   color: $white;
   border: none;
@@ -415,7 +412,7 @@
     ::placeholder {
       opacity: 0.5; /* Firefox */
 
-/* Chrome, Firefox, Opera, Safari 10.1+ */
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: $white;
     }
 

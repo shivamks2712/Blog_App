@@ -149,60 +149,20 @@ const Cart = () => {
                   </tbody>
                 </table>
               </Col>
-              <Col lg={12} className="space-mb--r100">
-                <div className="cart-coupon-area space-pt--30 space-pb--30">
-                  <Row className="align-items-center">
-                    <Col lg={7} className="space-mb-mobile-only--30">
-                      <div className="lezada-form coupon-form">
-                        <form>
-                          <Row>
-                            <Col md={7}>
-                              <input
-                                type="text"
-                                placeholder="Enter your coupon code"
-                              />
-                            </Col>
-                            <Col md={5} sm={5}>
-                              <button className="lezada-button lezada-button--medium">
-                                apply coupon
-                              </button>
-                            </Col>
-                          </Row>
-                        </form>
-                      </div>
-                    </Col>
-                    <Col lg={5} className="text-start text-lg-end">
-                      <button
-                        className="lezada-button lezada-button--medium"
-                        onClick={() => dispatch(deleteAllFromCart())}
-                      >
-                        clear cart
-                      </button>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Col lg={5} className="ms-auto">
+
+              <Col lg={5} className="ms-auto mt-4">
                 <div className="cart-calculation-area">
-                  <h2 className="space-mb--40">Cart totals</h2>
-                  <table className="cart-calculation-table space-mb--40">
-                    <tbody>
-                      <tr>
-                        <th>SUBTOTAL</th>
-                        <td className="subtotal">
-                          ${cartTotalPrice.toFixed(2)}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>TOTAL</th>
-                        <td className="total">${cartTotalPrice.toFixed(2)}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <h2 className="space-mb--40">Cart total</h2>
+                  <p>
+                    TOTAL
+                    <span style={{ float: "right" }}>
+                      ${cartTotalPrice.toFixed(2)}
+                    </span>
+                  </p>
                   <div className="cart-calculation-button text-center">
                     <Anchor
                       path="/user/checkout"
-                      className="lezada-button lezada-button--medium"
+                      className="lezada-button lezada-button--small mt-4"
                     >
                       proceed to checkout
                     </Anchor>

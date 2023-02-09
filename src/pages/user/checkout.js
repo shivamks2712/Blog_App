@@ -57,19 +57,41 @@ const Checkout = () => {
                       return (
                         <li key={i}>
                           {product.name} X {product.quantity}{" "}
-                          <span>${discountedPrice}</span>
+                          <span>₹ {discountedPrice}</span>
                         </li>
                       );
                     })}
                   </ul>
                   <p>
-                    Sub Total <span>${cartTotalPrice.toFixed(2)}</span>
+                    Sub Total <span>₹ {cartTotalPrice.toFixed(2)}</span>
                   </p>
                   <p>
-                    Shipping Fee <span>$00.00</span>
+                    Shipping Fee <span>₹ 00.00</span>
                   </p>
+
+                  <div className="mt-4">
+                    <p className="applyCoupon">
+                      Have a coupon?
+                      <input
+                        type="text"
+                        className="checkoutCouponInput"
+                        placeholder="apply promocode"
+                      />
+                    </p>
+                  </div>
+                  {true ? (
+                    <p>
+                      Coupon Discount{" "}
+                      <span style={{ color: "blue" }}>
+                        -₹ {cartTotalPrice.toFixed(2)}
+                      </span>
+                    </p>
+                  ) : (
+                    ""
+                  )}
+
                   <h4>
-                    Grand Total <span>${cartTotalPrice.toFixed(2)}</span>
+                    Grand Total <span>₹ {cartTotalPrice.toFixed(2)}</span>
                   </h4>
                 </div>
               </Col>
@@ -143,7 +165,6 @@ const Checkout = () => {
                       <IoMdArrowDropdown
                         size={25}
                         style={{
-                          // float: "right",
                           marginLeft: "10px",
                         }}
                         color="black"
@@ -152,7 +173,7 @@ const Checkout = () => {
                   </p>
                   <div
                     className={`checkoutAddressLists  d-${
-                      addressListsDisplay ? "block" : "none"
+                      !addressListsDisplay ? "block" : "none"
                     }`}
                   >
                     <Anchor path="/user/address" className="text-black">
@@ -165,7 +186,7 @@ const Checkout = () => {
                   </div>
                 </div>
 
-                <button className="lezada-button lezada-button--medium space-mt--20">
+                <button className="lezada-button lezada-button--medium   space-mt--20">
                   Place order
                 </button>
               </Col>
@@ -199,42 +220,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
-const stateArrayIndia = [
-  "Andhra Pradesh",
-  "Arunachal Pradesh",
-  "Assam",
-  "Bihar",
-  "Chhattisgarh",
-  "Goa",
-  "Gujarat",
-  "Haryana",
-  "Himachal Pradesh",
-  "Jammu and Kashmir",
-  "Jharkhand",
-  "Karnataka",
-  "Kerala",
-  "Madhya Pradesh",
-  "Maharashtra",
-  "Manipur",
-  "Meghalaya",
-  "Mizoram",
-  "Nagaland",
-  "Odisha",
-  "Punjab",
-  "Rajasthan",
-  "Sikkim",
-  "Tamil Nadu",
-  "Telangana",
-  "Tripura",
-  "Uttarakhand",
-  "Uttar Pradesh",
-  "West Bengal",
-  "Andaman and Nicobar Islands",
-  "Chandigarh",
-  "Dadra and Nagar Haveli",
-  "Daman and Diu",
-  "Delhi",
-  "Lakshadweep",
-  "Puducherry",
-];

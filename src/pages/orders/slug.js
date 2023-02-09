@@ -2,8 +2,8 @@ import { Container } from "react-bootstrap";
 import { LayoutTwo } from "../../components/Layout";
 import { BiDownload, BiSupport } from "react-icons/bi";
 const orderSpanDetail = {
-  fontWeight: "400",
-  fontSize: "small",
+  fontWeight: "500",
+  fontSize: "12px",
   paddingLeft: "2px",
 };
 
@@ -17,7 +17,7 @@ const OrderItem = () => {
           height={"40px"}
           alt=""
         />
-        <p className="mx-3">
+        <p className="mx-3 fw-semibold">
           Tomato <br />
           <span style={orderSpanDetail}>500g x 1 </span>
         </p>
@@ -34,17 +34,15 @@ const OrderDetails = () => {
         <Container>
           <div className="my-account-area__content  px-0">
             <div className="supportNav d-flex justify-content-between text-black mx-0 py-0 mb-0 px-3">
-              <p>
+              <p className="slugOrder_id">
                 ORDO0861331
                 <br />
-                <span style={orderSpanDetail}>
-                  {false ? "Arrived at 8:23 pm" : "On the way"}
-                </span>
+                <span>{false ? "Arrived at 8:23 pm" : "On the way"}</span>
               </p>
               <p>
                 Deliver to
                 <br />
-                <span style={orderSpanDetail}>
+                <span>
                   {"Rohini sec-16 G2-12/13 first floor".substring(0, 16) +
                     " ..."}
                 </span>
@@ -52,7 +50,7 @@ const OrderDetails = () => {
               <p>
                 <BiSupport /> Need help?
                 <br />
-                <span style={orderSpanDetail}>Contact with us</span>
+                <span>Contact with us</span>
               </p>
             </div>
             <OrderItem />

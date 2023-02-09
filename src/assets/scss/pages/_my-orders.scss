@@ -22,17 +22,38 @@
       border-bottom: 1px solid $grey--eleven;
     }
     > div.supportNav {
-      font-size: 18px;
-      @include respond(small-mobile) {
-        font-size: 15;
+      p.myOrdersOrder_ID {
+        font-size: 13 !important;
       }
-      @include respond(extra-small-mobile) {
-        font-size: 13;
+
+      p {
+        font-size: 18px;
+        font-weight: 600;
+        &.slugOrder_id {
+          font-size: 16px;
+          @include respond(small-mobile) {
+            font-size: 14px;
+            padding-top: 2px;
+          }
+          @include respond(extra-small-mobile) {
+            font-size: 11px;
+            padding-top: 3px;
+          }
+        }
         span {
-          font-size: 10px !important;
+          padding-left: 2px;
+          font-weight: 400;
+          @include respond(extra-small-mobile) {
+            font-size: 9px !important;
+          }
+        }
+        @include respond(small-mobile) {
+          font-size: 15px;
+        }
+        @include respond(extra-small-mobile) {
+          font-size: 13px;
         }
       }
-      font-weight: 600;
 
       margin-bottom: 25px;
       padding-bottom: 10px;

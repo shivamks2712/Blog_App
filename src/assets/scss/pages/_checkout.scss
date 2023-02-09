@@ -216,6 +216,16 @@
       float: right;
     }
   }
+  p.applyCoupon {
+    border: none;
+
+    .checkoutCouponInput {
+      all: unset;
+      float: right;
+      border-bottom: 1px solid $grey--six;
+      text-align: center;
+    }
+  }
 }
 
 /*-- Checkout Payment Method --*/
