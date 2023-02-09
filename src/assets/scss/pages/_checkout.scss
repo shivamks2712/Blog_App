@@ -187,6 +187,10 @@
     border-bottom: 1px solid $grey--six;
     & li {
       font-size: 14px;
+
+      @include respond(extra-small-mobile) {
+        font-size: 12px;
+      }
       font-weight: 500;
       line-height: 23px;
 
@@ -197,6 +201,7 @@
       color: $grey--seven;
       & span {
         float: right;
+        font-weight: 600;
 
         color: $black;
       }

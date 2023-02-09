@@ -15,12 +15,7 @@ const SwiperSlider = forwardRef(
       slidesPerView: 1,
       spaceBetween: 0,
       loop: false,
-      autoplay: options?.autoplay
-        ? {
-            delay: 2500,
-            disableOnInteraction: false,
-          }
-        : false,
+      autoplay: options?.autoplay ? options.autoplay : false,
       watchSlidesProgress: true,
       autoHeight: true,
       breakpoints: {},

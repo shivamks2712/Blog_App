@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import { LayoutTwo } from "../../components/Layout";
+import { LayoutTwo } from "../../../components/Layout";
 import { BiDownload, BiSupport } from "react-icons/bi";
 const orderSpanDetail = {
   fontWeight: "500",

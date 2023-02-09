@@ -8,6 +8,7 @@ const params = {
   spaceBetween: 200,
   navigation: true,
   autoplay: {
+    disableOnInteraction: false,
     delay: 2500,
   },
 };

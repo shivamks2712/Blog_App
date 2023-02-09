@@ -1,21 +1,20 @@
 import { Container } from "react-bootstrap";
-import Anchor from "../anchor";
 import Swiper, { SwiperSlide } from "../swiper";
 
-const params = {
-  loop: true,
-  speed: 1000,
-  spaceBetween: 200,
-  navigation: false,
-  grabCursor: true,
-  autoplay: {
-    delay: 2000,
-  },
-};
-
 const ImageSliderOffers = () => {
+  const params = {
+    loop: true,
+    speed: 1200,
+    spaceBetween: 200,
+    grabCursor: true,
+    autoplay: {
+      disableOnInteraction: false,
+      delay: 2000,
+    },
+  };
+
   return (
-    <div className="my-3">
+    <div className="my-2">
       <Container fluid className="p-0 m-0">
         <Swiper options={params}>
           {[1, 2, 3, 4].map((single, i) => {

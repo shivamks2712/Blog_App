@@ -31,7 +31,7 @@ const OrderBox = ({ element }) => {
         className="orderViewButton p-2 mb-2"
         style={{ marginLeft: "auto" }}
       >
-        View Details
+        <Anchor path="/orders/orderDetails/slug">View Details</Anchor>
       </button>
     </div>
   );

@@ -1,12 +1,15 @@
-import { IoMdLocate } from "react-icons/io";
+import { IoMdLocate, IoMdSearch } from "react-icons/io";
 import { useEffect } from "react";
 import AddressListWrapper from "./AddressListWrapper";
+import { Col, Container, Row } from "react-bootstrap";
 
 const LocatinBox = ({ setLocation }) => {
   const addressType = {
     border: "1px solid grey",
     fontSize: "12px",
     padding: "4px 8px",
+    marginLeft: "3px",
+    marginRight: "3px",
     color: "black",
     borderRadius: "5px",
   };
@@ -63,12 +66,32 @@ const LocatinBox = ({ setLocation }) => {
       <p onClick={() => getLocation()} className="mt-2 text-black">
         <IoMdLocate size={20} /> Use current location
       </p>
-      <input type="text" id="userLocation" placeholder="Search location" />
+
+      <div
+        className="d-flex align-items-center p-1 "
+        style={{ border: "1px solid grey", borderRadius: "5px" }}
+      >
+        <Col style={{ borderRight: "1px solid grey", paddingRight: "5px" }}>
+          <IoMdSearch size={20} />
+        </Col>
+        <Col>
+          <input
+            type="text"
+            style={{ all: "unset", paddingLeft: "8px" }}
+            placeholder="Search location"
+          />
+        </Col>
+      </div>
 
       <hr />
-      <div className="d-flex justify-content-evenly ">
+      <div className="d-flex mx-3 justify-content-evenly ">
         {["Home", "Office", "Hotel", "other"].map((e, i) => (
-          <span id={`addresType-${i}`} key={e} style={addressType}>
+          <span
+            id={`addresType-${i}`}
+            key={e}
+            style={addressType}
+            // className="mx-1"
+          >
             {e}
           </span>
         ))}

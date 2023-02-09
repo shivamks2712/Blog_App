@@ -6,14 +6,11 @@
   width: 100%;
 
   border: 1px solid $grey--three;
-
-  thead {
-    @include respond(extra-large-mobile) {
-      display: none;
-    }
-
-    @include respond(large-mobile) {
-      display: none;
+  > tbody > tr td {
+    font-weight: 500;
+    color: black;
+    @include respond(extra-small-mobile) {
+      font-size: 12px;
     }
   }
 
@@ -257,6 +254,9 @@
           @include respond(extra-small-mobile) {
             width: 50px;
             font-size: 12px;
+          }
+          @media screen and(max-width:300px) {
+            padding: 0 10px;
           }
           margin-bottom: 0;
           padding: 0 15px;

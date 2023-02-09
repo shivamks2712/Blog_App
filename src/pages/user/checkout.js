@@ -56,7 +56,7 @@ const Checkout = () => {
                       cartTotalPrice += discountedPrice * product.quantity;
                       return (
                         <li key={i}>
-                          {product.name} X {product.quantity}{" "}
+                          {product.name} X {product.quantity}
                           <span>₹ {discountedPrice}</span>
                         </li>
                       );
@@ -69,16 +69,17 @@ const Checkout = () => {
                     Shipping Fee <span>₹ 00.00</span>
                   </p>
 
-                  <div className="mt-4">
-                    <p className="applyCoupon">
-                      Have a coupon?
-                      <input
-                        type="text"
-                        className="checkoutCouponInput"
-                        placeholder="apply promocode"
-                      />
-                    </p>
-                  </div>
+                  <p
+                    className="applyCoupon my-3 text-black"
+                    style={{ fontSize: "13px" }}
+                  >
+                    Promocode
+                    <input
+                      type="text"
+                      className="checkoutCouponInput"
+                      placeholder="Apply promocode"
+                    />
+                  </p>
                   {true ? (
                     <p>
                       Coupon Discount{" "}

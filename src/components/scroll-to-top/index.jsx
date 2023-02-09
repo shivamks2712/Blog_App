@@ -1,6 +1,9 @@
 import useScrollTop from "../../hooks/use-scroll-top";
 const ScrollToTop = () => {
-  const { stick, onClickHandler } = useScrollTop();
+  const { stick } = useScrollTop();
+  const onClickHandler = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   if (stick) {
     return (
       <button

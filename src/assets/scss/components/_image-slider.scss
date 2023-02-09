@@ -1,6 +1,14 @@
 /*=============================================
 =            image slider            =
 =============================================*/
+.cart-image-slider {
+  width: 100%;
+  min-height: 180px;
+  background: cover;
+  @include respond(small-mobile) {
+    min-height: 150px;
+  }
+}
 
 .image-slider-wrapper {
   .swiper-wrap {

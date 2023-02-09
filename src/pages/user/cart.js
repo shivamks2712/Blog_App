@@ -6,11 +6,11 @@ import {
   addToCart,
   decreaseQuantity,
   deleteFromCart,
-  deleteAllFromCart,
 } from "../../store/slices/cart-slice";
 import { getDiscountPrice, cartItemStock } from "../../lib/product";
 import { LayoutTwo } from "../../components/Layout";
 import Anchor from "../../components/anchor";
+import ImageSliderThree from "../../components/ImageSlider/ImageSliderThree";
 
 const Cart = () => {
   const [quantityCount] = useState(1);
@@ -27,6 +27,10 @@ const Cart = () => {
   return (
     <LayoutTwo>
       {/* cart content */}
+      <Container>
+        <ImageSliderThree imageSliderData={[1, 2, 3, 4, 5, 6]} />
+      </Container>
+
       <div className="cart-content space-mt--r130 space-mb--r130">
         <Container>
           {cartItems && cartItems.length >= 1 ? (
