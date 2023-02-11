@@ -1,5 +1,4 @@
 import { IoIosClose, IoMdArrowDropdown } from "react-icons/io";
-import { useState } from "react";
 import clsx from "clsx";
 import MobileMenuNav from "./MobileMenuNav";
 import MobileMenuWidgets from "./MobileMenuWidgets";
@@ -8,15 +7,13 @@ import Anchor from "../../anchor";
 
 const MobileMenu = ({ activeStatus, getActiveStatus }) => {
   const currentAddress = "Rohini Sector 16 G2-12/13 1st floor 110085";
-  const [locationBox, setlocationBox] = useState(false);
 
   return (
     <div className={clsx("offcanvas-mobile-menu", activeStatus && "active")}>
       <div
-        className="offcanvas-mobile-menu__overlay-close"
+        className="offcanvas-mobile-menu__overlay-close "
         onClick={() => {
           getActiveStatus(false);
-          setlocationBox(false);
         }}
       />
       <div className="offcanvas-mobile-menu__wrapper">
@@ -24,7 +21,6 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
           className="offcanvas-mobile-menu__close"
           onClick={() => {
             getActiveStatus(false);
-            setlocationBox(false);
           }}
         >
           <IoIosClose />
@@ -36,7 +32,7 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
               path="/user/address"
               className="offcanvas-mobile-menu__search "
             >
-              <div onClick={() => setlocationBox(!locationBox)}>
+              <div>
                 <b className="text-black">Deliver at</b>
                 <p
                   style={{
@@ -81,6 +77,17 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
 
             {/* mobile widgets */}
             <MobileMenuWidgets />
+            <p
+              className=" fw-bold"
+              style={{
+                textAlign: "center",
+                color: "orange",
+                paddingLeft: "5px",
+                fontSize: "18px",
+              }}
+            >
+              shop<span style={{ color: "green" }}>27</span>
+            </p>
           </div>
         </div>
       </div>

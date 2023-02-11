@@ -6,7 +6,7 @@ import Anchor from "../../anchor";
 const MobileMenuWidgets = () => {
   return (
     <div className="offcanvas-mobile-menu__widgets ">
-      <div className="contact-widget space-mb--30">
+      <div className="contact-widget space-mb--20">
         <p className="fs-6 ">Your Information</p>
         <ul className="px-2 text-black">
           <li>

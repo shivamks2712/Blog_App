@@ -12,11 +12,20 @@ const FooterOne = () => {
             <nav className="footer-nav-container footer-nav-container--horizontal space-mb--20">
               <ul>
                 <li>
-                  <a href="#">ABOUT US</a>
+                  <p
+                    style={{
+                      color: "orange",
+                      fontSize: "20px",
+                      fontWeight: "1000",
+                    }}
+                  >
+                    shop<span style={{ color: "green" }}>27</span>
+                  </p>
                 </li>
                 <li>
-                  <a href="#">STORE LOCATION</a>
+                  <a href="#">ABOUT US</a>
                 </li>
+
                 <li>
                   <a href="#">CONTACT</a>
                 </li>

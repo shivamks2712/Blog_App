@@ -7,6 +7,7 @@ import SearchOverlay from "./elements/SearchOverlay";
 import CartOverlay from "./elements/CartOverlay";
 import MobileMenu from "./elements/MobileMenu";
 import Anchor from "../anchor";
+import Shop27Logo from "../BrandLogo/Shop27Logo";
 
 const HeaderOne = ({ aboutOverlay }) => {
   const [scroll, setScroll] = useState(0);
@@ -46,11 +47,7 @@ const HeaderOne = ({ aboutOverlay }) => {
             {/* logo */}
             <div className="header-content__logo d-flex align-items-center space-pr--15">
               <Anchor path="/">
-                <img
-                  src={process.env.PUBLIC_URL + "/assets/images/logo.png"}
-                  className="img-fluid"
-                  alt=""
-                />
+                <Shop27Logo />
               </Anchor>
             </div>
 

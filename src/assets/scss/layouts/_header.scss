@@ -1396,6 +1396,9 @@ header {
     @include respond(large-mobile) {
       width: 280px;
     }
+    @media only screen and (max-width: 350px) {
+      width: 230px;
+    }
   }
 
   &__close {
