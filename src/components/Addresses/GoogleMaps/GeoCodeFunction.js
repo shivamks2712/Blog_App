@@ -1,5 +1,4 @@
 import Geocode from "react-geocode";
-
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
 Geocode.setApiKey("AIzaSyBPXAPGFnljqnvU5ti6o2ozR_js7Xzbbis");
 
@@ -25,7 +24,6 @@ Geocode.enableDebug();
 Geocode.fromLatLng("48.8583701", "2.2922926").then(
   (response) => {
     const address = response.results[0].formatted_address;
-    console.log(address);
   },
   (error) => {
     console.error(error);
@@ -36,7 +34,7 @@ Geocode.fromLatLng("48.8583701", "2.2922926").then(
 // Geocode.setLocationType("ROOFTOP") enabled
 // the below parser will work for most of the countries
 
-export function GetAddressFromCordinates({ lat, lng }) {
+export function GetAddressFromCordinates({ lat, lng, setAddress }) {
   Geocode.fromLatLng(lat, lng).then(
     (response) => {
       const address = response.results[0].formatted_address;
@@ -61,7 +59,7 @@ export function GetAddressFromCordinates({ lat, lng }) {
         }
       }
       console.log(city, state, country);
-      console.log(address);
+      setAddress(address);
     },
     (error) => {
       console.error(error);
@@ -71,14 +69,17 @@ export function GetAddressFromCordinates({ lat, lng }) {
 
 // Get latitude & longitude from address.
 
-export function GetGeoCode({ address }) {
+export function GetGeoCode({ address, setCoords }) {
+  console.log(address);
   Geocode.fromAddress(address).then(
     (response) => {
-      const { lat, lng } = response.results[0].geometry.location;
-      return { lat, lng };
+      const coords = response.results[0].geometry.location;
+      setCoords(coords);
+      return coords;
     },
     (error) => {
-      return { lat: undefined, lng: undefined };
+      console.log(error);
+      return { lat: 10.99835602, lng: 77.01502627 };
     }
   );
 }

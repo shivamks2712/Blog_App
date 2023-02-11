@@ -5,8 +5,6 @@ import { HeroSliderOne } from "../components/HeroSlider";
 import { ProductTab } from "../components/ProductTab";
 import heroSliderData from "../data/hero-sliders/hero-slider-one.json";
 import Shop27Logo from "../components/BrandLogo/Shop27Logo";
-// import { ImageCta } from "../components/Cta";
-// import imageCtaData from "../data/image-cta/image-cta-one.json";
 
 const Home = () => {
   const { products } = useSelector((state) => state.product);

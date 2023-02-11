@@ -7,6 +7,7 @@
     margin-bottom: 5px;
     border-radius: 5px;
     border: 1px solid grey;
+    width: 100%;
   }
   :focus {
     border: 1px solid black;
@@ -21,4 +22,20 @@
 }
 .addressListWrapper {
   max-width: 22rem;
+}
+.pac-container {
+  margin-top: 10px;
+  margin-left: -40px;
+  margin-right: -10px;
+  width: 250px !important;
+  font-size: small !important;
+}
+
+.pac-item,
+.pac-item-query {
+  font-size: 10px !important;
+}
+
+.mapViewMapPicker {
+  height: 5nn 0vh;
 }

@@ -542,6 +542,11 @@ react-google-autocomplete@^2.7.2:
     lodash.debounce "^4.0.8"
     prop-types "^15.5.0"
 
+react-google-map-picker@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-google-map-picker/-/react-google-map-picker-1.2.3.tgz#bfd4efe1e2a1345a66d3250ed05ed37166fc2f33"
+  integrity sha512-XeIj0Eh0vhNToMTebQQrt5O9fdPRDf4KtG8J22xupH7Pu49J1dP5UuhfCM6VmK2nIv5ECyQUpOT6+gZgGaQhJA==
+
 react-hooks-paginator@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-hooks-paginator/-/react-hooks-paginator-0.5.0.tgz#0ecf4d46ab32d0f88f5a5196132308044abbbc27"

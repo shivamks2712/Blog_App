@@ -1,26 +1,39 @@
-import GoogleMapReact from "google-map-react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { GetAddressFromCordinates } from "./GeoCodeFunction";
 
-export default function MapView() {
-  const [renderComp, setRenderComp] = useState(
-    <div style={{ height: "80vh", width: "100%" }}></div>
-  );
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 16,
-  };
+import MapPicker from "react-google-map-picker";
+
+const DefaultZoom = 16;
+
+const MapView = ({ coords, setAddress }) => {
+  const [zoom, setZoom] = useState(DefaultZoom);
+
+  function handleChangeLocation(lat, lng) {
+    GetAddressFromCordinates({ lat, lng, setAddress });
+  }
+
+  function handleChangeZoom(newZoom) {
+    setZoom(newZoom);
+  }
+
+  function handleResetLocation() {
+    setZoom(DefaultZoom);
+  }
 
   return (
-    <div style={{ height: "80vh", width: "100%" }}>
-      {/* <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-        onChange={() => console.log("hii")}
-      ></GoogleMapReact> */}
-    </div>
+    <>
+      <MapPicker
+        className="mapViewMapPicker"
+        defaultLocation={coords}
+        zoom={zoom}
+        mapTypeId="roadmap"
+        style={{ height: "700px" }}
+        onChangeLocation={handleChangeLocation}
+        onChangeZoom={handleChangeZoom}
+        apiKey="AIzaSyADS_LFRmfMFMFH3SlaN7rJmSr3iCijs20"
+      />
+    </>
   );
-}
+};
+
+export default MapView;

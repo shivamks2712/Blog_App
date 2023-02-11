@@ -1,9 +1,8 @@
 import { IoMdLocate } from "react-icons/io";
-import { useEffect } from "react";
 import AddressListWrapper from "./AddressListWrapper";
-import AutoAddress from "./GoogleMaps/AutoAddress";
+import AddressAutoComplete from "./GoogleMaps/GoogleAutoAddress";
 
-const LocatinBox = ({ setLocation }) => {
+const LocatinBox = ({ setAddress, setCoords, address }) => {
   const addressType = {
     border: "1px solid grey",
     fontSize: "12px",
@@ -28,7 +27,7 @@ const LocatinBox = ({ setLocation }) => {
       <label for="flatNo">Flat,HouseNo,Floor,Tower</label>
       <input autoFocus type="text" name="flatNo" id="flatNo" />
       <label for="street">Street,Society,Landmark</label>
-      <input type="text" name="street" id="street" />
+      <input type="text" name="street" id="street" value={address} />
       <label for="recipName">Recipient's Name</label>
       <input type="text" name="recipName" id="recipName" />
       <label for="pinCode">Pincode</label>
@@ -53,30 +52,22 @@ const LocatinBox = ({ setLocation }) => {
   function success(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
-    setLocation({ lat: lat, lng: lng });
+    setCoords({ lat: lat, lng: lng });
     console.log(lat, lng);
   }
-  // useEffect(() => {
-  //   setTimeout(() => getLocation(), 2500);
-  // }, []);
 
   return (
-    <div className="locationBox m-3 px-4 py-3">
+    <div className="locationBox m-3 px-3 py-3">
       <b className="text-black ">Select a location</b>
       <p onClick={() => getLocation()} className="mt-2 text-black">
         <IoMdLocate size={20} /> Use current location
       </p>
-      <AutoAddress />
+      <AddressAutoComplete setAddress={setAddress} />
 
       <hr />
       <div className="d-flex mx-3 justify-content-evenly ">
         {["Home", "Office", "Hotel", "other"].map((e, i) => (
-          <span
-            id={`addresType-${i}`}
-            key={e}
-            style={addressType}
-            // className="mx-1"
-          >
+          <span id={`addresType-${i}`} key={e} style={addressType}>
             {e}
           </span>
         ))}
