@@ -1,7 +1,7 @@
-import { IoMdLocate, IoMdSearch } from "react-icons/io";
+import { IoMdLocate } from "react-icons/io";
 import { useEffect } from "react";
 import AddressListWrapper from "./AddressListWrapper";
-import { Col, Container, Row } from "react-bootstrap";
+import AutoAddress from "./GoogleMaps/AutoAddress";
 
 const LocatinBox = ({ setLocation }) => {
   const addressType = {
@@ -56,9 +56,9 @@ const LocatinBox = ({ setLocation }) => {
     setLocation({ lat: lat, lng: lng });
     console.log(lat, lng);
   }
-  useEffect(() => {
-    setTimeout(() => getLocation(), 2500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => getLocation(), 2500);
+  // }, []);
 
   return (
     <div className="locationBox m-3 px-4 py-3">
@@ -66,22 +66,7 @@ const LocatinBox = ({ setLocation }) => {
       <p onClick={() => getLocation()} className="mt-2 text-black">
         <IoMdLocate size={20} /> Use current location
       </p>
-
-      <div
-        className="d-flex align-items-center p-1 "
-        style={{ border: "1px solid grey", borderRadius: "5px" }}
-      >
-        <Col style={{ borderRight: "1px solid grey", paddingRight: "5px" }}>
-          <IoMdSearch size={20} />
-        </Col>
-        <Col>
-          <input
-            type="text"
-            style={{ all: "unset", paddingLeft: "8px" }}
-            placeholder="Search location"
-          />
-        </Col>
-      </div>
+      <AutoAddress />
 
       <hr />
       <div className="d-flex mx-3 justify-content-evenly ">

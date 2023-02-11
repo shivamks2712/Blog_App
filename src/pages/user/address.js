@@ -1,4 +1,4 @@
-import GooglePlaceInput from "../../components/Addresses/GoogleMaps/GooglePlacesInput";
+import MapView from "../../components/Addresses/GoogleMaps/MapView";
 import LocatinBox from "../../components/Addresses/LocationBox";
 import { Fragment, useState } from "react";
 import { HeaderOne } from "../../components/Header";
@@ -8,7 +8,7 @@ const Address = () => {
     <Fragment>
       <HeaderOne />
       <div className="addressContainer d-flex align-items-center justify-content-around my-5">
-        <GooglePlaceInput location={location} setLocation={setLocation} />
+        <MapView />
         <LocatinBox setLocation={setLocation} className="locationBox " />
       </div>
     </Fragment>
