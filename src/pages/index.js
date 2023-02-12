@@ -4,7 +4,6 @@ import { LayoutOne } from "../components/Layout";
 import { HeroSliderOne } from "../components/HeroSlider";
 import { ProductTab } from "../components/ProductTab";
 import heroSliderData from "../data/hero-sliders/hero-slider-one.json";
-import Shop27Logo from "../components/BrandLogo/Shop27Logo";
 
 const Home = () => {
   const { products } = useSelector((state) => state.product);

@@ -1,6 +1,8 @@
 import { IoMdLocate } from "react-icons/io";
 import AddressListWrapper from "./AddressListWrapper";
 import AddressAutoComplete from "./GoogleMaps/GoogleAutoAddress";
+import { GetAddressFromCordinates } from "./GoogleMaps/GeoCodeFunction";
+import { useEffect } from "react";
 
 const LocatinBox = ({ setAddress, setCoords, address }) => {
   const addressType = {
@@ -11,6 +13,7 @@ const LocatinBox = ({ setAddress, setCoords, address }) => {
     marginRight: "3px",
     color: "black",
     borderRadius: "5px",
+    background: "none",
   };
   const saveButtonStyle = {
     all: "unset",
@@ -21,17 +24,19 @@ const LocatinBox = ({ setAddress, setCoords, address }) => {
     backgroundColor: "green",
   };
 
+  useEffect(() => {
+    document.getElementById("street").value = address;
+  }, [address]);
+
   // Address Form
   const fullAdress = (
     <form className="locationBoxAddressForm m-2">
       <label for="flatNo">Flat,HouseNo,Floor,Tower</label>
       <input autoFocus type="text" name="flatNo" id="flatNo" />
       <label for="street">Street,Society,Landmark</label>
-      <input type="text" name="street" id="street" value={address} />
+      <input type="text" name="street" id="street" />
       <label for="recipName">Recipient's Name</label>
       <input type="text" name="recipName" id="recipName" />
-      <label for="pinCode">Pincode</label>
-      <input type="text" name="pinCode" id="recipName" />
     </form>
   );
 
@@ -53,23 +58,27 @@ const LocatinBox = ({ setAddress, setCoords, address }) => {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     setCoords({ lat: lat, lng: lng });
-    console.log(lat, lng);
+    GetAddressFromCordinates({ lat, lng, setAddress });
   }
 
   return (
     <div className="locationBox m-3 px-3 py-3">
       <b className="text-black ">Select a location</b>
-      <p onClick={() => getLocation()} className="mt-2 text-black">
+      <button
+        style={{ all: "unset", padding: "10px" }}
+        onClick={() => getLocation()}
+        className="mt-2 text-black"
+      >
         <IoMdLocate size={20} /> Use current location
-      </p>
+      </button>
       <AddressAutoComplete setAddress={setAddress} />
 
       <hr />
       <div className="d-flex mx-3 justify-content-evenly ">
         {["Home", "Office", "Hotel", "other"].map((e, i) => (
-          <span id={`addresType-${i}`} key={e} style={addressType}>
+          <button id={`addresType-${i}`} key={e} style={addressType}>
             {e}
-          </span>
+          </button>
         ))}
       </div>
       {fullAdress}

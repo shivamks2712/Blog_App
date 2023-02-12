@@ -37,5 +37,10 @@
 }
 
 .mapViewMapPicker {
-  height: 5nn 0vh;
+  max-height: 60vh;
+  max-width: 50rem;
+
+  @include respond(small-mobile) {
+    max-height: 45vh;
+  }
 }

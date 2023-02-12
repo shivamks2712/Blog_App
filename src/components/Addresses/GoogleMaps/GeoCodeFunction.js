@@ -58,7 +58,6 @@ export function GetAddressFromCordinates({ lat, lng, setAddress }) {
           }
         }
       }
-      console.log(city, state, country);
       setAddress(address);
     },
     (error) => {
@@ -70,7 +69,6 @@ export function GetAddressFromCordinates({ lat, lng, setAddress }) {
 // Get latitude & longitude from address.
 
 export function GetGeoCode({ address, setCoords }) {
-  console.log(address);
   Geocode.fromAddress(address).then(
     (response) => {
       const coords = response.results[0].geometry.location;
@@ -78,7 +76,6 @@ export function GetGeoCode({ address, setCoords }) {
       return coords;
     },
     (error) => {
-      console.log(error);
       return { lat: 10.99835602, lng: 77.01502627 };
     }
   );

@@ -3,7 +3,7 @@ import { GetAddressFromCordinates } from "./GeoCodeFunction";
 
 import MapPicker from "react-google-map-picker";
 
-const DefaultZoom = 16;
+const DefaultZoom = 15;
 
 const MapView = ({ coords, setAddress }) => {
   const [zoom, setZoom] = useState(DefaultZoom);
@@ -16,23 +16,17 @@ const MapView = ({ coords, setAddress }) => {
     setZoom(newZoom);
   }
 
-  function handleResetLocation() {
-    setZoom(DefaultZoom);
-  }
-
   return (
-    <>
-      <MapPicker
-        className="mapViewMapPicker"
-        defaultLocation={coords}
-        zoom={zoom}
-        mapTypeId="roadmap"
-        style={{ height: "700px" }}
-        onChangeLocation={handleChangeLocation}
-        onChangeZoom={handleChangeZoom}
-        apiKey="AIzaSyADS_LFRmfMFMFH3SlaN7rJmSr3iCijs20"
-      />
-    </>
+    <MapPicker
+      className="mapViewMapPicker "
+      defaultLocation={coords}
+      zoom={zoom}
+      mapTypeId="roadmap"
+      style={{ height: "700px" }}
+      onChangeLocation={handleChangeLocation}
+      onChangeZoom={handleChangeZoom}
+      apiKey="AIzaSyADS_LFRmfMFMFH3SlaN7rJmSr3iCijs20"
+    />
   );
 };
 

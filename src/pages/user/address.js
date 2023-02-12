@@ -16,7 +16,7 @@ const Address = () => {
   return (
     <Fragment>
       <HeaderOne />
-      <div className="addressContainer d-flex align-items-center justify-content-around my-5">
+      <div className="addressContainer d-flex align-items-center justify-content-around my-5 mx-2">
         <MapView coords={coords} setAddress={setAddress} />
         <LocatinBox
           setCoords={setCoords}
