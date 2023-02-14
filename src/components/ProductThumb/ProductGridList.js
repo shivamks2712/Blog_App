@@ -86,7 +86,6 @@ const ProductGridList = ({
               {product.stock && product.stock > 0 ? (
                 <button
                   onClick={() => {
-                    console.log(cartItem);
                     dispatch(addToCart(product));
                   }}
                   disabled={

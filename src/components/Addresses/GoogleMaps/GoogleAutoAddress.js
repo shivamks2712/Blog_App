@@ -3,7 +3,7 @@ import { Col } from "react-bootstrap";
 import { IoMdSearch } from "react-icons/io";
 import { useState, useEffect } from "react";
 
-const AddressAutoComplete = ({ setAddress }) => {
+const AddressAutoComplete = ({ setAddress, getLocation }) => {
   const [script, setScript] = useState("");
 
   useEffect(() => {
@@ -13,10 +13,13 @@ const AddressAutoComplete = ({ setAddress }) => {
           async
           defer
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPXAPGFnljqnvU5ti6o2ozR_js7Xzbbis&libraries=places"
-          onLoad={initAutoComplete}
+          onLoad={() => {
+            initAutoComplete();
+            getLocation();
+          }}
         ></Script>
       );
-    }, 500);
+    }, 600);
   }, []);
 
   function initAutoComplete() {
@@ -34,7 +37,6 @@ const AddressAutoComplete = ({ setAddress }) => {
       var place = autocomplete.getPlace();
       if (place.geometry) {
         const locality = document.getElementById("autocomplete").value;
-        console.log(locality);
         setAddress(locality);
       }
       document.getElementById("autocomplete").value = " ";

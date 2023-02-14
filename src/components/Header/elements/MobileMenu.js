@@ -25,7 +25,7 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
         >
           <IoIosClose />
         </button>
-        <div className="offcanvas-mobile-menu__content-wrapper">
+        <div className="offcanvas-mobile-menu__content-wrapper position-relative">
           <div className="offcanvas-mobile-menu__content">
             {/* current address */}
             <Anchor
@@ -53,6 +53,13 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
               </div>
             </Anchor>
 
+            {/* <div
+              className="d-block bg black position-absolute"
+              style={{ top: 0, zIndex: 10000, height: "100%" }}
+            >
+              hii
+            </div> */}
+
             {/* mobile nav menu */}
             <MobileMenuNav getActiveStatus={getActiveStatus} />
             <div>
@@ -77,17 +84,6 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
 
             {/* mobile widgets */}
             <MobileMenuWidgets />
-            <p
-              className=" fw-bold"
-              style={{
-                textAlign: "center",
-                color: "orange",
-                paddingLeft: "5px",
-                fontSize: "18px",
-              }}
-            >
-              shop<span style={{ color: "green" }}>27</span>
-            </p>
           </div>
         </div>
       </div>

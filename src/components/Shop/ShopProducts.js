@@ -1,7 +1,7 @@
 import { ProductGridListWrapper } from "../../components/ProductThumb";
 import { Row } from "react-bootstrap";
 
-const ShopProducts = ({ products, layout }) => {
+const ShopProducts = ({ products }) => {
   return (
     <div className="shop-products">
       <Row className="d-flex justify-content-start">

@@ -2,8 +2,17 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import { Container, Row } from "react-bootstrap";
 import { ProductGridWrapper } from "../ProductThumb";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const ProductTab = ({ newProducts, popularProducts, saleProducts }) => {
+  const params = {
+    loop: false,
+    slidesPerView: 1,
+    speed: 1000,
+    spaceBetween: 200,
+    navigation: true,
+  };
+
   return (
     <div className="product-tab space-mb--r10">
       <Container fluid>
@@ -15,9 +24,11 @@ const ProductTab = ({ newProducts, popularProducts, saleProducts }) => {
             <Nav.Item className="productTabShopCategories">
               <Nav.Link eventKey="new">Grocery</Nav.Link>
             </Nav.Item>
+
             <Nav.Item>
               <Nav.Link eventKey="sale">Fish&Meat</Nav.Link>
             </Nav.Item>
+
             <Nav.Item>
               <Nav.Link eventKey="popular">Laundary</Nav.Link>
             </Nav.Item>

@@ -1,6 +1,11 @@
 .locationBox {
   max-width: 17rem;
-  border-left: 1px solid green;
+  // border-left: 1px solid green;
+  text-align: center;
+  height: auto;
+  input {
+    text-align: start !important;
+  }
 }
 .addressContainer {
   overflow: hidden;

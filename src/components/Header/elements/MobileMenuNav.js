@@ -58,7 +58,7 @@ const MobileMenuNav = ({ getActiveStatus }) => {
       <p className="fs-4 fw-bolder fc-black mb-2" style={{ color: "black" }}>
         My Account
       </p>
-      <span className="fs-6">9835838814</span>
+      <span className="fs-6">9835******</span>
       <ul
         className="d-flex justify-content-around  mt-3   "
         style={{ backgroundColor: "#E6FCE4", borderRadius: "8px" }}

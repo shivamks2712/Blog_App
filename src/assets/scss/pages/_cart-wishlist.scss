@@ -225,41 +225,41 @@
         button {
           font-size: 20px;
           font-weight: 500;
-
-          padding: 0;
+          margin: 0;
+          padding: 0 18px;
 
           color: $black--two;
           border: none;
           background: none;
           @include respond(large-mobile) {
             font-size: 18px;
+            padding: 0 15px;
           }
           @include respond(small-mobile) {
             font-size: 16px;
+            padding: 0 12px;
           }
           @include respond(extra-small-mobile) {
             font-size: 14px;
+            padding: 0 8px;
           }
         }
         input {
           font-size: 16px;
           font-weight: 500;
 
-          width: 80px;
+          width: 20px;
 
           @include respond(small-mobile) {
-            width: 60px;
             font-size: 14px;
           }
           @include respond(extra-small-mobile) {
-            width: 50px;
             font-size: 12px;
           }
           @media only screen and (max-width: 300px) {
-            padding: 0 10px;
+            padding: 0px;
           }
           margin-bottom: 0;
-          padding: 0 15px;
 
           text-align: center;
           vertical-align: middle;

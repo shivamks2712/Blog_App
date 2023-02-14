@@ -3,7 +3,7 @@
 import { IoIosCheckmarkCircle, IoIosCloseCircleOutline } from "react-icons/io";
 import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
-const AddressListWrapper = ({ addressLists, getAddress }) => {
+const AddressListWrapper = ({ addressLists, setAddress }) => {
   const AddressList = ({ address }) => {
     const [deleteConfirm, setdeleteConfirm] = useState(false);
     return (
@@ -12,7 +12,7 @@ const AddressListWrapper = ({ addressLists, getAddress }) => {
           <div
             className="col-10"
             onClick={() => {
-              getAddress(address);
+              setAddress(address.street);
             }}
           >
             <b className="text-black"> {address.type}</b>

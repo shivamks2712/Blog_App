@@ -5,7 +5,7 @@ import Anchor from "../../anchor";
 
 const MobileMenuWidgets = () => {
   return (
-    <div className="offcanvas-mobile-menu__widgets ">
+    <div className="offcanvas-mobile-menu__widgets position-relative">
       <div className="contact-widget space-mb--20">
         <p className="fs-6 ">Your Information</p>
         <ul className="px-2 text-black">
@@ -42,6 +42,18 @@ const MobileMenuWidgets = () => {
           </li>
         </ul>
       </div>
+      <p
+        className=" fw-bold position-absolute"
+        style={{
+          width: "100%",
+          textAlign: "center",
+          bottom: "-40px",
+          color: "orange",
+          fontSize: "18px",
+        }}
+      >
+        shop<span style={{ color: "green" }}>27</span>
+      </p>
     </div>
   );
 };

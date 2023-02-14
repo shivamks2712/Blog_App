@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GetAddressFromCordinates } from "./GeoCodeFunction";
 
 import MapPicker from "react-google-map-picker";
 
-const DefaultZoom = 15;
+const DefaultZoom = 16;
 
-const MapView = ({ coords, setAddress }) => {
+const MapView = ({ setCoords, coords, setAddress }) => {
   const [zoom, setZoom] = useState(DefaultZoom);
 
   function handleChangeLocation(lat, lng) {
+    setCoords({ lat, lng });
     GetAddressFromCordinates({ lat, lng, setAddress });
   }
 

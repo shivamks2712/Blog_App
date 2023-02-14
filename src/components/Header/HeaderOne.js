@@ -36,6 +36,7 @@ const HeaderOne = ({ aboutOverlay }) => {
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
+  let totalItem = 0;
 
   return (
     <Fragment>
@@ -71,7 +72,10 @@ const HeaderOne = ({ aboutOverlay }) => {
                     <IoIosCart />
                     {cartItems.length >= 1 ? (
                       <span className="count">
-                        {cartItems.length ? cartItems.length : ""}
+                        {cartItems.forEach((element) => {
+                          totalItem += element.quantity;
+                        })}
+                        {totalItem}
                       </span>
                     ) : (
                       ""

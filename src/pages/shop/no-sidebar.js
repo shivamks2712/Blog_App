@@ -73,7 +73,7 @@ const NoSidebar = () => {
             <Row>
               <Col>
                 {/* shop products */}
-                <ShopProducts layout={layout} products={currentData} />
+                <ShopProducts products={currentData} />
 
                 {/* shop product pagination */}
                 <div className="pro-pagination-style">
