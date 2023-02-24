@@ -1,12 +1,24 @@
-import { IoIosClose, IoMdArrowDropdown } from "react-icons/io";
+import {
+  IoIosClose,
+  IoMdArrowDropdown,
+  IoMdArrowBack,
+  IoMdAddCircle,
+} from "react-icons/io";
 import clsx from "clsx";
 import MobileMenuNav from "./MobileMenuNav";
 import MobileMenuWidgets from "./MobileMenuWidgets";
 import ImageSliderOffers from "../../ImageSlider/ImageSliderOffers";
 import Anchor from "../../anchor";
+import AddressList from "../elements/addressLists/AddressList";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const MobileMenu = ({ activeStatus, getActiveStatus }) => {
-  const currentAddress = "Rohini Sector 16 G2-12/13 1st floor 110085";
+  const [currentAddress, setCurrentAddress] = useState(
+    "Rohini Sector 16 G2-12/13 1st floor 110085"
+  );
+  const [displayAddress, setDisplayAddress] = useState(false);
+  const { addressItems } = useSelector((state) => state.address);
 
   return (
     <div className={clsx("offcanvas-mobile-menu", activeStatus && "active")}>
@@ -14,6 +26,7 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
         className="offcanvas-mobile-menu__overlay-close "
         onClick={() => {
           getActiveStatus(false);
+          setDisplayAddress(false);
         }}
       />
       <div className="offcanvas-mobile-menu__wrapper">
@@ -21,6 +34,7 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
           className="offcanvas-mobile-menu__close"
           onClick={() => {
             getActiveStatus(false);
+            setDisplayAddress(false);
           }}
         >
           <IoIosClose />
@@ -28,62 +42,101 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
         <div className="offcanvas-mobile-menu__content-wrapper position-relative">
           <div className="offcanvas-mobile-menu__content">
             {/* current address */}
-            <Anchor
-              path="/user/address"
-              className="offcanvas-mobile-menu__search "
+            <div
+              className="offcanvas-mobile-menu__search"
+              onClick={() => setDisplayAddress(!displayAddress)}
             >
-              <div>
-                <b className="text-black">Deliver at</b>
-                <p
-                  style={{
-                    width: "100%",
-                    lineHeight: "17px",
-                    fontSize: "16px",
-                    marginTop: "5px",
-                    marginBottom: "0px",
-                  }}
-                >
-                  {currentAddress.length > 20
-                    ? currentAddress.substring(0, 25) + " ..."
-                    : currentAddress}
-                  <IoMdArrowDropdown
-                    style={{ position: "absolute", top: "30px", right: "20px" }}
-                  />
-                </p>
-              </div>
-            </Anchor>
-
-            {/* <div
-              className="d-block bg black position-absolute"
-              style={{ top: 0, zIndex: 10000, height: "100%" }}
-            >
-              hii
-            </div> */}
-
-            {/* mobile nav menu */}
-            <MobileMenuNav getActiveStatus={getActiveStatus} />
-            <div>
+              <b className="text-black">Deliver at</b>
               <p
                 style={{
-                  fontWeight: "600",
-                  margin: "2px auto",
-                  color: "black",
-                  paddingLeft: "10px",
+                  width: "100%",
+                  lineHeight: "17px",
+                  fontSize: "15px",
+                  marginTop: "5px",
+                  marginBottom: "0px",
                 }}
               >
-                Deal of the day
+                {currentAddress.length > 20
+                  ? currentAddress.substring(0, 30) + " ..."
+                  : currentAddress.street}
+                <IoMdArrowDropdown
+                  style={{ position: "absolute", top: "30px", right: "20px" }}
+                />
               </p>
-              <ImageSliderOffers
-                imageSliderData={[
-                  "ImageSliderOffers",
-                  "ImageSliderOffers",
-                  "ImageSliderOffers",
-                ]}
-              />
             </div>
 
-            {/* mobile widgets */}
-            <MobileMenuWidgets />
+            {/* adress lists */}
+            <div
+              className={`d-${
+                displayAddress ? "block" : "none"
+              } addressListWrapper px-2`}
+              style={{
+                zIndex: 1000,
+                backgroundColor: "white",
+                height: "100%",
+                top: 0,
+              }}
+            >
+              <div className="d-flex justify-content-between me-3">
+                <IoMdArrowBack
+                  color="black"
+                  size={20}
+                  onClick={() => setDisplayAddress(false)}
+                />
+                <Anchor
+                  path="/user/address"
+                  className="fw-semibold"
+                  style={{ color: "black" }}
+                  onClick={() => {
+                    getActiveStatus(false);
+                    setDisplayAddress(false);
+                  }}
+                >
+                  <IoMdAddCircle className="me-1" size={17} color="green" />
+                  Add new address
+                </Anchor>
+              </div>
+              {addressItems && addressItems.length >= 1 ? (
+                addressItems.map((address, i) => (
+                  <AddressList
+                    setAddress={setCurrentAddress}
+                    address={address}
+                    key={i}
+                  />
+                ))
+              ) : (
+                <p className="d-flex justify-content-around my-5">
+                  No Saved Address
+                </p>
+              )}
+            </div>
+
+            <div className={`d-${displayAddress ? "none" : "block"}`}>
+              {/* mobile nav menu */}
+              <MobileMenuNav getActiveStatus={getActiveStatus} />
+              <div>
+                <p
+                  style={{
+                    fontWeight: "600",
+                    margin: "2px auto",
+                    color: "black",
+                    paddingLeft: "10px",
+                  }}
+                >
+                  Deal of the day
+                </p>
+                <ImageSliderOffers
+                  imageSliderData={[
+                    "ImageSliderOffers",
+                    "ImageSliderOffers",
+                    "ImageSliderOffers",
+                  ]}
+                />
+              </div>
+
+              {/* mobile widgets */}
+              <MobileMenuWidgets />
+            </div>
           </div>
         </div>
       </div>

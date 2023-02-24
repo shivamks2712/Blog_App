@@ -2,21 +2,31 @@
 import { IoIosCheckmarkCircle, IoIosCloseCircleOutline } from "react-icons/io";
 import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteAddress } from "../../../../store/slices/address-slice";
 
-const AddressList = ({ address, setAddress }) => {
+const AddressList = ({ setAddress, address }) => {
   const [deleteConfirm, setdeleteConfirm] = useState(false);
+  const dispatch = useDispatch();
   return (
     <div
-      style={{ borderBottom: "1px solid grey" }}
-      className="py-2"
-      onClick={() => {
-        setAddress(address);
-      }}
+      style={{ borderBottom: "1px solid grey", cursor: "pointer" }}
+      className="p-2  my-2"
     >
       <div className="addressList row position-relative">
-        <div className="col-10">
-          <b className="text-black"> {address.type}</b>
-          <p>{(address.street + "," + address.flatno).substring(0, 35)}...</p>
+        <div
+          className="col-10"
+          onClick={() => setAddress(address.flatNo + " " + address.street)}
+        >
+          <b className="me-2" style={{ fontSize: "14px", color: "green" }}>
+            {address.type ? "Home" : "Other"}
+          </b>
+          <b style={{ fontSize: "11px", color: "black" }}>
+            {address.flatNo.substring(0, 20)}...
+          </b>
+          <p style={{ fontSize: "10px", marginTop: "5px" }}>
+            {address.street.substring(0, 30) + "..."}
+          </p>
         </div>
         <div className="col-2 m-auto">
           <AiFillDelete
@@ -27,7 +37,7 @@ const AddressList = ({ address, setAddress }) => {
               }, 3000);
             }}
             size={22}
-            color="black"
+            color="#ff9900"
           />
         </div>
 
@@ -51,7 +61,13 @@ const AddressList = ({ address, setAddress }) => {
             onClick={() => setdeleteConfirm(false)}
             color="red"
           />
-          <IoIosCheckmarkCircle size={22} color="green" />
+          <IoIosCheckmarkCircle
+            size={22}
+            color="green"
+            onClick={() =>
+              dispatch(deleteAddress({ addressId: address.addressId }))
+            }
+          />
         </div>
       </div>
     </div>

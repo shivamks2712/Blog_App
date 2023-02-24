@@ -35,8 +35,6 @@ Geocode.fromLatLng("48.8583701", "2.2922926").then(
 // the below parser will work for most of the countries
 
 export function GetAddressFromCordinates({ lat, lng, setAddress }) {
-  console.log(lat, lng);
-
   Geocode.fromLatLng(lat, lng).then(
     (response) => {
       const address = response.results[0].formatted_address;

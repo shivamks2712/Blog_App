@@ -47,6 +47,7 @@ const Address = () => {
           setAddress={setAddress}
         />
         <LocatinBox
+          coords={coords}
           getLocation={getLocation}
           address={address}
           setAddress={setAddress}
