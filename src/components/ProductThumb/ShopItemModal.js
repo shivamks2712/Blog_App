@@ -3,10 +3,11 @@ import { ProductRating } from "../Product";
 import Swiper, { SwiperSlide } from "../swiper";
 import { IoIosReturnLeft } from "react-icons/io";
 import { TbTruckDelivery } from "react-icons/tb";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { getProductCartQuantity } from "../../lib/product";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import cogoToast from "@hasanm95/cogo-toast";
+import { addToCart } from "../../store/slices/cart-slice";
 
 const gallerySwiperParams = {
   pagination: true,
@@ -23,6 +24,7 @@ const ShopItemMOdal = (props) => {
   const { cartItems } = useSelector((state) => state.cart);
 
   const productCartQty = getProductCartQuantity(cartItems, product);
+  const dispatch = useDispatch();
   const cartButtons = (
     <Row>
       <Col className="my-4">
@@ -74,24 +76,15 @@ const ShopItemMOdal = (props) => {
         >
           {productDetails.available && productDetails.available > 0 ? (
             <button
-              onClick={() =>
+              onClick={() => {
                 dispatch(
                   addToCart({
                     ...product,
                     quantity: quantityCount,
-                    selectedProductColor: selectedProductColor
-                      ? selectedProductColor
-                      : product.selectedProductColor
-                      ? product.selectedProductColor
-                      : null,
-                    selectedProductSize: selectedProductSize
-                      ? selectedProductSize
-                      : product.selectedProductSize
-                      ? product.selectedProductSize
-                      : null,
                   })
-                )
-              }
+                );
+                props.onHide();
+              }}
               disabled={productCartQty >= productDetails.available}
               className="lezada-button lezada-button--medium product-quickview__cart space-mr--10"
             >
