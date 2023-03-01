@@ -203,6 +203,7 @@
       .cart-plus-minus {
         width: 125px;
         padding: 10px 0;
+        display: flex;
 
         border-bottom: 2px solid $grey--eleven;
 
@@ -226,7 +227,7 @@
           font-size: 20px;
           font-weight: 500;
           margin: 0;
-          padding: 0 18px;
+          padding: 0 15px;
 
           color: $black--two;
           border: none;
@@ -247,9 +248,7 @@
         input {
           font-size: 16px;
           font-weight: 500;
-
-          width: 20px;
-
+          width: 100%;
           @include respond(small-mobile) {
             font-size: 14px;
           }
@@ -397,8 +396,8 @@
 }
 
 /*=====  End of cart and wishlist  ======*/
-@media screen and (min-width: 990px) {
-  .cart-product-header-price {
-    margin-left: 60px;
+@media screen and (max-width: 540px) {
+  .product-remove {
+    display: none;
   }
 }

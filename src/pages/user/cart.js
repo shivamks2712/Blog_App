@@ -7,7 +7,7 @@ import {
   decreaseQuantity,
   deleteFromCart,
 } from "../../store/slices/cart-slice";
-import { getDiscountPrice, cartItemStock } from "../../lib/product";
+import { cartItemStock } from "../../lib/product";
 import { LayoutTwo } from "../../components/Layout";
 import Anchor from "../../components/anchor";
 import ImageSliderThree from "../../components/ImageSlider/ImageSliderThree";
@@ -40,24 +40,23 @@ const Cart = () => {
                 <table className="cart-table">
                   <tbody className="p-2">
                     <tr className="d-flex justify-content-between align-items-center ">
-                      <td className="product-thumbnail">Product</td>
-                      <td className="product-name ">Name</td>
+                      <td className="product-thumbnail ">Product</td>
+                      <td className="product-price ">Name</td>
 
-                      <td className="product-price cart-product-header-price">
-                        Price
-                      </td>
+                      <td className="product-price ">Price</td>
 
                       <td className="product-price">Quantity</td>
 
                       <td className="total-price">Total </td>
 
-                      <td className="product-remove"></td>
+                      <td
+                        className="product-remove d-block"
+                        style={{ width: "80px" }}
+                      ></td>
                     </tr>
                     {cartItems.map((product, i) => {
-                      const discountedPrice = getDiscountPrice(
-                        product.price,
-                        product.discount
-                      ).toFixed(2);
+                      console.log(product);
+                      const discountedPrice = product.value.toFixed(2);
 
                       cartTotalPrice += discountedPrice * product.quantity;
                       return (
@@ -70,24 +69,25 @@ const Cart = () => {
                               path={`/shop/product-basic/${product.slug}`}
                             >
                               <img
-                                src={
-                                  process.env.PUBLIC_URL + product.thumbImage[0]
-                                }
+                                src={product.symbol}
                                 className="img-fluid mx-1"
                                 alt=""
                               />
                             </Anchor>
                           </td>
-                          <td className="product-name">
+                          <td
+                            className="product-name "
+                            style={{ maxWidth: "80px" }}
+                          >
                             <Anchor
                               path={`/shop/product-basic/${product.slug}`}
                             >
-                              {product.name}
+                              {product.name.substring(0, 18)}
                             </Anchor>
                           </td>
 
                           <td className="product-price">
-                            <span className="price">${discountedPrice}</span>
+                            <span className="price">₹{discountedPrice}</span>
                           </td>
 
                           <td className="product-quantity">
@@ -119,12 +119,7 @@ const Cart = () => {
                                 disabled={
                                   product !== undefined &&
                                   product.quantity &&
-                                  product.quantity >=
-                                    cartItemStock(
-                                      product,
-                                      product.selectedProductColor,
-                                      product.selectedProductSize
-                                    )
+                                  product.quantity >= product.available
                                 }
                               >
                                 +
@@ -134,7 +129,7 @@ const Cart = () => {
 
                           <td className="total-price">
                             <span className="price">
-                              ${(discountedPrice * product.quantity).toFixed(2)}
+                              ₹{(discountedPrice * product.quantity).toFixed(2)}
                             </span>
                           </td>
 

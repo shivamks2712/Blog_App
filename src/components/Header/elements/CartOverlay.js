@@ -39,10 +39,7 @@ const CartOverlay = ({ activeStatus, getActiveStatus }) => {
               <div className="cart-product-container">
                 <CustomScroll allowOuterScroll={true}>
                   {cartItems.map((product, i) => {
-                    const discountedPrice = getDiscountPrice(
-                      product.price,
-                      product.discount
-                    ).toFixed(2);
+                    const discountedPrice = product.value.toFixed(2);
 
                     cartTotalPrice += discountedPrice * product.quantity;
 
@@ -60,9 +57,7 @@ const CartOverlay = ({ activeStatus, getActiveStatus }) => {
                         <div className="image">
                           <Anchor path={`/shop/product-basic/${product.slug}`}>
                             <img
-                              src={
-                                process.env.PUBLIC_URL + product.thumbImage[0]
-                              }
+                              src={product.symbol}
                               className="img-fluid"
                               alt=""
                             />

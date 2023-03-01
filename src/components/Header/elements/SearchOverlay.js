@@ -36,6 +36,7 @@ const SearchOverlay = ({ activeStatus, getActiveStatus, searchDisplay }) => {
             if (searchDisplay == 1) getStoreLists(dispatch, setShops, search);
             else getStoreItems(shopId, setItems, dispatch, search);
             document.getElementById("searchHolder").value = "";
+            document.querySelector("body").classList.remove("overflow-hidden");
           }}
         >
           <input
