@@ -5,7 +5,7 @@ import { getDiscountPrice } from "../../lib/product";
 import { IoMdCash, IoMdArrowDropdown, IoMdAddCircle } from "react-icons/io";
 import { LayoutTwo } from "../../components/Layout";
 import Anchor from "../../components/anchor";
-import AddressListWrapper from "../../components/Addresses/AddressListWrapper";
+// import AddressListWrapper from "../../components/Addresses/AddressListWrapper";
 
 const Checkout = () => {
   const savedAddressLists = [
@@ -180,10 +180,10 @@ const Checkout = () => {
                     <Anchor path="/user/address" className="text-black">
                       <IoMdAddCircle size={20} /> <b> Add new address</b>
                     </Anchor>
-                    <AddressListWrapper
+                    {/* <AddressListWrapper
                       addressLists={savedAddressLists}
                       getAddress={setcurrentActiveAddress}
-                    />
+                    /> */}
                   </div>
                 </div>
 
