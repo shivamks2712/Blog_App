@@ -1,7 +1,17 @@
 import { MdClose } from "react-icons/md";
 import clsx from "clsx";
+import { getStoreItems } from "../../../axiosCall/onLoad";
+import { getStoreLists } from "../../../axiosCall/onLoad";
+import { useDispatch } from "react-redux";
+import { setShops } from "../../../store/slices/shop-slice";
+import { setItems } from "../../../store/slices/item-slice";
+import { useRouter } from "next/router";
 
-const SearchOverlay = ({ activeStatus, getActiveStatus }) => {
+const SearchOverlay = ({ activeStatus, getActiveStatus, searchDisplay }) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { shopId } = router.query;
+
   return (
     <div className={clsx("search-overlay", activeStatus && "active")}>
       {/*=======  close icon  =======*/}
@@ -17,8 +27,22 @@ const SearchOverlay = ({ activeStatus, getActiveStatus }) => {
       {/*=======  End of close icon  =======*/}
       {/*=======  search overlay content  =======*/}
       <div className="search-overlay__content">
-        <form className="space-mb--20">
-          <input type="search" placeholder="Search Products..." />
+        <form
+          className="space-mb--20"
+          onSubmit={(e) => {
+            e.preventDefault();
+            getActiveStatus(false);
+            let search = document.getElementById("searchHolder").value;
+            if (searchDisplay == 1) getStoreLists(dispatch, setShops, search);
+            else getStoreItems(shopId, setItems, dispatch, search);
+            document.getElementById("searchHolder").value = "";
+          }}
+        >
+          <input
+            type="search"
+            placeholder="Search Products..."
+            id="searchHolder"
+          />
         </form>
         <div className="search-overlay__hint"># Hit enter to search</div>
       </div>

@@ -1,11 +1,13 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import storage from "./sync_storage";
-import productReducer from "./slices/product-slice";
+import itemReducer from "./slices/item-slice";
 import cartReducer from "./slices/cart-slice";
 import wishlistReducer from "./slices/wishlist-slice";
 import compareReducer from "./slices/compare-slice";
 import addressReducer from "./slices/address-slice";
+import shopReducer from "./slices/shop-slice";
+import productReducer from "./slices/product-slice";
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== "production") {
@@ -16,11 +18,13 @@ const bindMiddleware = (middleware) => {
 };
 
 const combinedReducer = combineReducers({
-  product: productReducer,
+  item: itemReducer,
+  shop: shopReducer,
   cart: cartReducer,
   wishlist: wishlistReducer,
   compare: compareReducer,
   address: addressReducer,
+  product: productReducer,
 });
 
 const reducer = (state, action) => {

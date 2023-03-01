@@ -3,31 +3,18 @@ import { useSelector } from "react-redux";
 import ProductGridList from "./ProductGridList";
 import { getDiscountPrice } from "../../lib/product";
 
-const ProductGridWrapper = ({
-  products,
-  bottomSpace,
-}) => {
+const ProductGridWrapper = ({ products, bottomSpace }) => {
   const { cartItems } = useSelector((state) => state.cart);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
-  const { compareItems } = useSelector((state) => state.compare);
 
   return (
     <Fragment>
       {products &&
         products.map((product) => {
-          const discountedPrice = getDiscountPrice(
-            product.price,
-            product.discount
-          ).toFixed(2);
-          const productPrice = product.price.toFixed(2);
+          const discountedPrice = product.value.toFixed(2);
+          const productPrice = product.maximum_value.toFixed(2);
+          const stock = product.available;
           const cartItem = cartItems.find(
             (cartItem) => cartItem.id === product.id
-          );
-          const wishlistItem = wishlistItems.find(
-            (wishlistItem) => wishlistItem.id === product.id
-          );
-          const compareItem = compareItems.find(
-            (compareItem) => compareItem.id === product.id
           );
 
           return (
@@ -37,9 +24,8 @@ const ProductGridWrapper = ({
               discountedPrice={discountedPrice}
               productPrice={productPrice}
               cartItem={cartItem}
-              wishlistItem={wishlistItem}
-              compareItem={compareItem}
               bottomSpace={bottomSpace}
+              stock={stock}
             />
           );
         })}

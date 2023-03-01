@@ -3,10 +3,10 @@ import { HeaderOne } from "../Header";
 import { FooterOne } from "../Footer";
 import ScrollToTop from "../scroll-to-top";
 
-const LayoutOne = ({ children, aboutOverlay }) => {
+const LayoutOne = ({ children, aboutOverlay, searchDisplay }) => {
   return (
     <Fragment>
-      <HeaderOne aboutOverlay={aboutOverlay} />
+      <HeaderOne aboutOverlay={aboutOverlay} searchDisplay={searchDisplay} />
       {children}
       <FooterOne />
       <ScrollToTop />

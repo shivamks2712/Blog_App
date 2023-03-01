@@ -2,18 +2,15 @@ import { IoIosClose } from "react-icons/io";
 import CustomScroll from "react-custom-scroll";
 import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
-import Anchor from "../../anchor"
+import Anchor from "../../anchor";
 import { getDiscountPrice } from "../../../lib/product";
 import { deleteFromCart } from "../../../store/slices/cart-slice";
 
-const CartOverlay = ({
-  activeStatus,
-  getActiveStatus,
-}) => {
+const CartOverlay = ({ activeStatus, getActiveStatus }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
   let cartTotalPrice = 0;
-  
+
   return (
     <div className={clsx("cart-overlay", activeStatus && "active")}>
       <div
@@ -53,25 +50,29 @@ const CartOverlay = ({
                       <div className="single-cart-product" key={i}>
                         <span className="cart-close-icon">
                           <button
-                            onClick={() => dispatch(deleteFromCart(product.cartItemId))}
+                            onClick={() =>
+                              dispatch(deleteFromCart(product.cartItemId))
+                            }
                           >
                             <IoIosClose />
                           </button>
                         </span>
                         <div className="image">
                           <Anchor path={`/shop/product-basic/${product.slug}`}>
-                              <img
-                                src={
-                                  process.env.PUBLIC_URL + product.thumbImage[0]
-                                }
-                                className="img-fluid"
-                                alt=""
-                              />
+                            <img
+                              src={
+                                process.env.PUBLIC_URL + product.thumbImage[0]
+                              }
+                              className="img-fluid"
+                              alt=""
+                            />
                           </Anchor>
                         </div>
                         <div className="content">
                           <h5>
-                            <Anchor path={`/shop/product-basic/${product.slug}`}>
+                            <Anchor
+                              path={`/shop/product-basic/${product.slug}`}
+                            >
                               {product.name}
                             </Anchor>
                           </h5>
@@ -107,12 +108,8 @@ const CartOverlay = ({
               </p>
               {/*=======  cart buttons  =======*/}
               <div className="cart-buttons">
-                <Anchor path="/other/cart">
-                  view cart
-                </Anchor>
-                <Anchor path="/other/checkout">
-                  checkout
-                </Anchor>
+                <Anchor path="/other/cart">view cart</Anchor>
+                <Anchor path="/other/checkout">checkout</Anchor>
               </div>
               {/*=======  free shipping text  =======*/}
               <p className="free-shipping-text">

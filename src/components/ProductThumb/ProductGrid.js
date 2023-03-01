@@ -4,17 +4,9 @@ import clsx from "clsx";
 import ProductModal from "./ProductModal";
 import Anchor from "../anchor";
 
-const ProductGrid = ({
-  product,
-  discountedPrice,
-  productPrice,
-  cartItem,
-  wishlistItem,
-  compareItem,
-  bottomSpace,
-  column,
-}) => {
+const ProductGrid = ({ shop, bottomSpace, column }) => {
   const [modalShow, setModalShow] = useState(false);
+  const name = shop.store.name;
 
   return (
     <Fragment>
@@ -23,25 +15,33 @@ const ProductGrid = ({
         md={6}
         className={clsx(bottomSpace)}
       >
-        <div className="product-grid">
+        <div
+          className="product-grid"
+          style={{
+            border: "1px solid grey",
+            padding: "5px",
+            borderRadius: "8px",
+            height: "100%",
+          }}
+        >
           {/*=======  single product image  =======*/}
-          <div className="product-grid__image">
-            <Anchor path="/shop/no-sidebar" className="image-wrap">
-              <img
-                src={process.env.PUBLIC_URL + product.thumbImage[0]}
-                height={"220px"}
-                alt={product.name}
-              />
-            </Anchor>
+          <div className="product-grid__image px-1">
+            <a
+              disabled="disabled"
+              onClick={() => setModalShow(true)}
+              className="image-wrap"
+            >
+              <img src={shop.store.symbol} height="220px" />
+            </a>
           </div>
 
           {/*=======  single product content  =======*/}
           <div className="product-grid__content">
             <div className="title">
               <h3>
-                <Anchor path="/shop/no-sidebar">{product.name}</Anchor>
+                <Anchor path={`/shop/${shop.id}`}>{name}</Anchor>
               </h3>
-              <Anchor path="/shop/no-sidebar">Explore Now</Anchor>
+              <Anchor path={`/shop/${shop.id}`}>Explore Now</Anchor>
             </div>
           </div>
         </div>
@@ -50,12 +50,7 @@ const ProductGrid = ({
       <ProductModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        product={product}
-        discountedprice={discountedPrice}
-        productprice={productPrice}
-        cartitem={cartItem}
-        wishlistitem={wishlistItem}
-        compareitem={compareItem}
+        shop={shop}
       />
     </Fragment>
   );

@@ -14,9 +14,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const MobileMenu = ({ activeStatus, getActiveStatus }) => {
-  const [currentAddress, setCurrentAddress] = useState(
-    "Rohini Sector 16 G2-12/13 1st floor 110085"
-  );
+  const [currentAddress, setCurrentAddress] = useState("Select Address");
   const [displayAddress, setDisplayAddress] = useState(false);
   const { addressItems } = useSelector((state) => state.address);
 
@@ -56,9 +54,7 @@ const MobileMenu = ({ activeStatus, getActiveStatus }) => {
                   marginBottom: "0px",
                 }}
               >
-                {currentAddress.length > 20
-                  ? currentAddress.substring(0, 30) + " ..."
-                  : currentAddress.street}
+                {currentAddress.substring(0, 30) + " ..."}
                 <IoMdArrowDropdown
                   style={{ position: "absolute", top: "30px", right: "20px" }}
                 />

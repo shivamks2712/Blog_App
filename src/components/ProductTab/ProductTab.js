@@ -1,71 +1,48 @@
-import Tab from "react-bootstrap/Tab";
-import Nav from "react-bootstrap/Nav";
 import { Container, Row } from "react-bootstrap";
 import { ProductGridWrapper } from "../ProductThumb";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Paginator from "react-hooks-paginator";
+import { useState, useEffect } from "react";
+import { loadPageTransationId } from "../../axiosCall/onLoad";
+import { useDispatch, useSelector } from "react-redux";
+import { setShops } from "../../store/slices/shop-slice";
 
-const ProductTab = ({ newProducts, popularProducts, saleProducts }) => {
-  const params = {
-    loop: false,
-    slidesPerView: 1,
-    speed: 1000,
-    spaceBetween: 200,
-    navigation: true,
-  };
+const ProductTab = () => {
+  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
+  const { shops } = useSelector((state) => state.shop);
 
+  useEffect(() => {
+    loadPageTransationId(setShops, dispatch);
+  }, []);
   return (
     <div className="product-tab space-mb--r10">
+      <center className="my-5 text-black">
+        <b>Shops Near You </b>{" "}
+      </center>
       <Container fluid>
-        <Tab.Container defaultActiveKey="popular">
-          <Nav
-            variant="pills"
-            className="product-tab__navigation text-center justify-content-center space-mb--r60"
-          >
-            <Nav.Item className="productTabShopCategories">
-              <Nav.Link eventKey="new">Grocery</Nav.Link>
-            </Nav.Item>
+        {/* Shop Category 1 */}
 
-            <Nav.Item>
-              <Nav.Link eventKey="sale">Fish&Meat</Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link eventKey="popular">Laundary</Nav.Link>
-            </Nav.Item>
-          </Nav>
-          <Tab.Content>
-            {/* Shop Category 1 */}
-            <Tab.Pane eventKey="new">
-              <Row className="space-mb--rm50">
-                <ProductGridWrapper
-                  products={newProducts}
-                  bottomSpace="space-mb--r50"
-                  column={4}
-                />
-              </Row>
-            </Tab.Pane>
-            {/* Shop Category 1 */}
-            <Tab.Pane eventKey="popular">
-              <Row className="space-mb--rm50">
-                <ProductGridWrapper
-                  products={popularProducts}
-                  bottomSpace="space-mb--r50"
-                  column={4}
-                />
-              </Row>
-            </Tab.Pane>
-            {/* Shop Category 1 */}
-            <Tab.Pane eventKey="sale">
-              <Row className="space-mb--rm50">
-                <ProductGridWrapper
-                  products={saleProducts}
-                  bottomSpace="space-mb--r50"
-                  column={4}
-                />
-              </Row>
-            </Tab.Pane>
-          </Tab.Content>
-        </Tab.Container>
+        <Row className="space-mb--rm50">
+          <ProductGridWrapper
+            products={shops}
+            bottomSpace="space-mb--r50"
+            column={4}
+          />
+          <div className="pro-pagination-style">
+            <Paginator
+              totalRecords={shops.length}
+              pageLimit={16}
+              pageNeighbours={2}
+              setOffset={setOffset}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              pageContainerClass="mb-0 mt-0"
+              pagePrevText="«"
+              pageNextText="»"
+            />
+          </div>
+        </Row>
       </Container>
     </div>
   );

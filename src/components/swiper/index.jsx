@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const SwiperSlider = forwardRef(
-  ({ options, children, className, navClass, customNav }, ref) => {
+  ({ options, children, className, navClass, customNav, size }, ref) => {
     const modules = options?.modules !== undefined ? options.modules : [];
     const prevClass = `prev-${navClass || "swiper-nav"}`;
     const nextClass = `next-${navClass || "swiper-nav"}`;
@@ -50,15 +50,17 @@ const SwiperSlider = forwardRef(
           <>
             <button
               type="button"
-              className={`swiper-button-prev ht-swiper-button-nav  ${prevClass}`}
+              className={`swiper-button-prev   ${prevClass}`}
+              style={{ border: "none", background: "none", color: "black" }}
             >
-              <IoIosArrowBack className="icon mobTabOffers " />
+              <IoIosArrowBack className="icon mobTabOffers " size={12} />
             </button>
             <button
               type="button"
-              className={`swiper-button-next ht-swiper-button-nav ${nextClass}`}
+              style={{ border: "none", background: "none", color: "black" }}
+              className={`swiper-button-next ${nextClass}`}
             >
-              <IoIosArrowForward className="icon mobTabOffers " />
+              <IoIosArrowForward className="icon mobTabOffers " size={12} />
             </button>
           </>
         )}

@@ -1,25 +1,24 @@
-const { createSlice } = require('@reduxjs/toolkit');
+const { createSlice } = require("@reduxjs/toolkit");
 import { HYDRATE } from "next-redux-wrapper";
 
 const productSlice = createSlice({
-    name: "product",
-    initialState: {
-        products: [],
+  name: "product",
+  initialState: {
+    products: [],
+  },
+  reducers: {
+    setProducts(state, action) {
+      state.items = action.payload;
     },
-    reducers: {
-        setProducts(state, action) {
-            state.products = action.payload;
-        }
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(HYDRATE, (state, action) => {
-                return {
-                    ...state,
-                    ...action.payload.products,
-                };
-            })
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(HYDRATE, (state, action) => {
+      return {
+        ...state,
+        ...action.payload.items,
+      };
+    });
+  },
 });
 
 export const { setProducts } = productSlice.actions;

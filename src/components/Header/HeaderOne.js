@@ -9,7 +9,7 @@ import MobileMenu from "./elements/MobileMenu";
 import Anchor from "../anchor";
 import Shop27Logo from "../BrandLogo/Shop27Logo";
 
-const HeaderOne = ({ aboutOverlay }) => {
+const HeaderOne = ({ aboutOverlay, searchDisplay }) => {
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -55,7 +55,7 @@ const HeaderOne = ({ aboutOverlay }) => {
             {/* icons */}
             <div className="header-content__icons space-pl--15">
               <ul className="d-block ">
-                <li>
+                <li style={{ display: searchDisplay ? "inline" : "none" }}>
                   <button
                     onClick={() => {
                       setOffCanvasSearchActive(true);
@@ -97,6 +97,7 @@ const HeaderOne = ({ aboutOverlay }) => {
       <SearchOverlay
         activeStatus={offCanvasSearchActive}
         getActiveStatus={setOffCanvasSearchActive}
+        searchDisplay={searchDisplay}
       />
       {/* cart overlay */}
       <CartOverlay

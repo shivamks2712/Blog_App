@@ -64,9 +64,10 @@ const AddressList = ({ setAddress, address }) => {
           <IoIosCheckmarkCircle
             size={22}
             color="green"
-            onClick={() =>
-              dispatch(deleteAddress({ addressId: address.addressId }))
-            }
+            onClick={() => {
+              setdeleteConfirm(false);
+              dispatch(deleteAddress({ addressId: address.addressId }));
+            }}
           />
         </div>
       </div>
