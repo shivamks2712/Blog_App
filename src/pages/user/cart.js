@@ -155,7 +155,7 @@ const Cart = () => {
                   <p>
                     TOTAL
                     <span style={{ float: "right" }}>
-                      ${cartTotalPrice.toFixed(2)}
+                      ₹ {cartTotalPrice.toFixed(2)}
                     </span>
                   </p>
                   <div className="cart-calculation-button text-center">

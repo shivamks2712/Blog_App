@@ -11,8 +11,9 @@ const ProductGrid = ({ shop, bottomSpace, column }) => {
   return (
     <Fragment>
       <Col
+        xs={6}
         lg={column && column === 4 ? 3 : 4}
-        md={6}
+        md={4}
         className={clsx(bottomSpace)}
       >
         <div
@@ -37,7 +38,7 @@ const ProductGrid = ({ shop, bottomSpace, column }) => {
 
           {/*=======  single product content  =======*/}
           <div className="product-grid__content">
-            <div className="title">
+            <div className="title mb-2">
               <h3>
                 <Anchor path={`/shop/${shop.id}`}>{name}</Anchor>
               </h3>

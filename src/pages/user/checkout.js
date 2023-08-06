@@ -32,6 +32,7 @@ const Checkout = () => {
     setaddressListsDisplay(!addressListsDisplay);
   }, [currentActiveAddress]);
 
+  console.log(cartItems);
   return (
     <LayoutTwo>
       {/* breadcrumb */}
@@ -48,11 +49,7 @@ const Checkout = () => {
                   </h4>
                   <ul>
                     {cartItems.map((product, i) => {
-                      const discountedPrice = getDiscountPrice(
-                        product.price,
-                        product.discount
-                      ).toFixed(2);
-
+                      const discountedPrice = product.value.toFixed(2);
                       cartTotalPrice += discountedPrice * product.quantity;
                       return (
                         <li key={i}>

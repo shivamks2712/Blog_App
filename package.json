@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/Zinc-Corp/shop27-web-frontend.git",
   "author": "Shivam Singh <shivamks2712@gmail.com>",
-  "license": "\"Licensed\"",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
@@ -44,6 +44,7 @@
     "yet-another-react-lightbox": "^2.2.2"
   },
   "devDependencies": {
+    "jest": "^29.6.2",
     "redux-devtools-extension": "^2.13.8",
     "sass": "^1.26.3"
   }
